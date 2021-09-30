@@ -20,7 +20,7 @@ use Benlumia007\Backdrop\Theme\Contracts\Menu\Menu as MenuContracts;
  * @since  3.0.0
  * @access public
  */
-class Menu implements MenuContracts {
+class Component implements MenuContracts {
     /**
      * $menu_id
      * 
