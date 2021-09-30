@@ -19,6 +19,7 @@
           "Benlumia007\\Backdrop\\Theme\\": "src/"
 		},
 		"files": [
+            "src/Menu/functions-menu.php",
 			"src/Site/functions-site.php"
 		]
     },
