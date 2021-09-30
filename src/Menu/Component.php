@@ -30,6 +30,10 @@ class Component implements MenuContracts {
      */
     public $menu_id;
 
+    public function __construct( $menu_id = [] ) {
+        $this->menu_id = $this->menus();
+    }
+
     /**
      * Register Menus
      * 
@@ -59,5 +63,6 @@ class Component implements MenuContracts {
 
 	public function boot() {
 		add_action( 'after_setup_theme', [ $this, 'register' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 }
