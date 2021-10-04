@@ -20,12 +20,15 @@
 		},
 		"files": [
             "src/Entry/functions-entry.php",
+            "src/Filters/functions-filters.php",
             "src/Menu/functions-menu.php",
             "src/Sidebar/functions-sidebar.php",
 			"src/Site/functions-site.php"
 		]
     },
     "require": {
-        "php": ">=7.3.24"
+        "php": ">=7.3.24",
+        "benlumia007/backdrop": "v3.0.0.x-dev",
+        "benlumia007/backdrop-template-helpers": "v1.0.0.x-dev"
     }
 }
