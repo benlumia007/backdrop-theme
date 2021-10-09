@@ -43,7 +43,7 @@ function render_title( array $args = [] ) {
 		$text
 	);
 
-	return apply_filters( 'backdrop/display/title', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/theme/display/title', $args['before'] . $html . $args['after'] );
 }
 
 /**
@@ -85,7 +85,7 @@ function render_permalink( array $args = [] ) {
 		sprintf( $args['text'], esc_url( $url ) )
 	);
 
-	return apply_filters( 'backdrop/display/permalink', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/theme/display/permalink', $args['before'] . $html . $args['after'] );
 }
 
 /**
@@ -124,7 +124,7 @@ function render_author( array $args = [] ) {
 
 	$html = sprintf( '<i class="fas fa-user"></i><span class="%s">%s</span>', esc_attr( $args['class'] ), $author );
 
-	return apply_filters( 'backdrop/display/author', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/theme/display/author', $args['before'] . $html . $args['after'] );
 }
 
 /**
@@ -165,7 +165,7 @@ function render_date( array $args = [] ) {
 		sprintf( $args['text'], get_the_date( $args['format'] ) )
 	);
 
-	return apply_filters( 'backdrop/display/date', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/theme/display/date', $args['before'] . $html . $args['after'] );
 }
 
 /**
@@ -216,7 +216,7 @@ function render_comments_link( array $args = [] ) {
 		$text
 	);
 
-	return apply_filters( 'backdrop/display/comments/link', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/theme/display/comments/link', $args['before'] . $html . $args['after'] );
 }
 
 function display_categories( array $args = [] ) {
@@ -240,7 +240,7 @@ function render_categories( array $args = [] ) {
 		'taxonomy' => 'category',
 		'text'     => '%s',
 		'class'    => 'cat-list',
-		'sep'      => _x( ' | ', 'taxonomy terms separator', 'backdrop-core' ),
+		'sep'      => _x( ' | ', 'taxonomy terms separator', 'backdrop' ),
 		'before'   => '<div class="cat-link">',
 		'after'    => '</div>'
 	] );
@@ -263,7 +263,7 @@ function render_categories( array $args = [] ) {
 		$html = $args['before'] . $html . $args['after'];
 	}
 
-	return apply_filters( 'backdrop/display/categories', $html );
+	return apply_filters( 'backdrop/theme/display/categories', $html );
 }
 
 
@@ -288,7 +288,7 @@ function render_tags( array $args = [] ) {
 		'taxonomy' => 'post_tag',
 		'text'     => '%s',
 		'class'    => 'tag-list',
-		'sep'      => _x( ' | ', 'taxonomy terms separator', 'backdrop-core' ),
+		'sep'      => _x( ' | ', 'taxonomy terms separator', 'backdrop' ),
 		'before'   => '<div class="tag-link">',
 		'after'    => '</div>'
 	] );
@@ -311,5 +311,5 @@ function render_tags( array $args = [] ) {
 		$html = $args['before'] . $html . $args['after'];
 	}
 
-	return apply_filters( 'backdrop/display/tags', $html );
+	return apply_filters( 'backdrop/theme/display/tags', $html );
 }
