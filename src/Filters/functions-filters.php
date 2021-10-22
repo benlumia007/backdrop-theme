@@ -36,3 +36,13 @@ add_filter( 'comments_template', function( $template ) {
 	// Return the found template.
 	return locate_template( $templates );
 } );
+
+/**
+ * Read More
+ */
+add_filter( 'excerpt_more', function() {
+	global $post;
+	$more = ' ...';
+
+	return esc_html( $more );
+} );
