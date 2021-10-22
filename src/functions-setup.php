@@ -20,3 +20,30 @@ use function Benlumia007\Backdrop\Template\path;
 function post_type_support() {
     add_post_type_support( 'page', 'excerpt' );
 }
+
+/**
+ * Add Comment Templates
+ */
+function comments_template( $template ) {
+	$templates = [];
+    $path = path();
+
+	// Allow for custom templates entered into comments_template( $file ).
+	$template = str_replace( trailingslashit( get_stylesheet_directory() ), '', $template );
+
+	$template = $path . $template;
+
+	if ( 'comments.php' !== $template ) {
+		$templates[] = $template;
+	}
+
+	// Add a comments template based on the post type.
+	$templates[] = sprintf( 'comments/%s.php', get_post_type() );
+
+	// Add the default comments template.
+	$templates[] = "{$path}/comments/default.php";
+	$templates[] = 'comments.php';
+
+	// Return the found template.
+	return locate_template( $templates );
+}
