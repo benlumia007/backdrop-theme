@@ -47,3 +47,13 @@ function comments_template( $template ) {
 	// Return the found template.
 	return locate_template( $templates );
 }
+
+/**
+ * Add excerpt more
+ */
+function excerpt_more() {
+	global $post;
+	$more = ' ...';
+
+	return esc_html( $more );
+}
