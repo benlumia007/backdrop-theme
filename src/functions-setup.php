@@ -70,7 +70,7 @@ function archive_title() {
 	} elseif ( is_year() ) {
 		$title = get_the_date( _x( 'Y', 'yearly archives date format', 'backdrop' ) );
 	} elseif ( is_month() ) {
-		$title =get_the_date( _x( 'F', 'monthly archives date format', 'backdrop' ) );
+		$title =get_the_date( _x( 'F Y', 'monthly archives date format', 'backdrop' ) );
 	} elseif ( is_day() ) {
 		$title = get_the_date( _x( 'F j Y', 'daily archives date format', 'backdrop' ) );
 	} elseif ( is_post_type_archive() ) {
