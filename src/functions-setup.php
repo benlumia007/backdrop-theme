@@ -63,9 +63,9 @@ function excerpt_more() {
  */
 function archive_title() {
 	if ( is_category() ) {
-		$title = esc_html__( 'Category', 'ecclesiastical' ) . '<span class="archive-description">' . single_cat_title( '', false ) . '</span>';
+		$title = single_cat_title( '', false );
 	} elseif ( is_tag() ) {
-		$title = esc_html__( 'Tag', 'ecclesiastical' ) . '<span class="archive-description">' . single_tag_title( '', false ) . '</span>';
+		$title = single_tag_title( '', false );
 	} elseif ( is_author() ) {
 		$title = esc_html__( 'Author', 'ecclesiastical' ) . '<span class="archive-description">' . get_the_author() . '</span>';
 	} elseif ( is_year() ) {
