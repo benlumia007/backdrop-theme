@@ -20,10 +20,11 @@
 		},
 		"files": [
             "src/Entry/functions-entry.php",
-            "src/Filters/functions-filters.php",
             "src/Menu/functions-menu.php",
             "src/Sidebar/functions-sidebar.php",
-			"src/Site/functions-site.php"
+			"src/Site/functions-site.php",
+            "src/functions-filters.php",
+            "src/functions-setup.php"
 		]
     },
     "require": {
