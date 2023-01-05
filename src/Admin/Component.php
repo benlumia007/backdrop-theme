@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Component/Customize.php )
+ * Backdrop
  *
  * @package   Backdrop Core
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
