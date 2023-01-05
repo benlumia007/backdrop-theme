@@ -2,8 +2,8 @@
 /**
  * Backdrop
  *
- * @package   Backdrop Core
- * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @package   Backdrop
+ * @copyright Copyright (C) 2019-2023. Benjamin Lu
  * @author    Benjamin Lu ( https://getbenonit.com )
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
