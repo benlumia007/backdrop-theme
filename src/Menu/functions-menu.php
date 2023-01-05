@@ -1,6 +1,6 @@
-<?php //phpcs:ignore
+<?php
 /**
- * functions menu
+ * Nav menu functions
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>

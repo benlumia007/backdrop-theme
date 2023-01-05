@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Page
+ * Admin interface
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -22,7 +22,7 @@ interface Admin extends Bootable {
 	/**
 	 * menu()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function menu();
@@ -30,7 +30,7 @@ interface Admin extends Bootable {
 	/**
 	 * callback()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function callback();
@@ -38,7 +38,7 @@ interface Admin extends Bootable {
 	/**
 	 * tabs()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function tabs();
@@ -46,7 +46,7 @@ interface Admin extends Bootable {
 	/**
 	 * pages()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function pages();

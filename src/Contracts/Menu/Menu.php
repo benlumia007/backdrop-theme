@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Sidebars
+ * Menu interface
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -18,7 +18,7 @@ use Backdrop\Contracts\Bootable;
 /**
  * Menu Interface
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  *
  * @link   ( https://developer.wordpress.org/themes/customize-api )
@@ -27,7 +27,7 @@ interface Menu extends Bootable {
 	/**
 	 * Register Menus
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function register();
@@ -35,7 +35,7 @@ interface Menu extends Bootable {
 	/**
 	 * Create Menus
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function create( string $name, string $id );

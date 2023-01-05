@@ -19,7 +19,7 @@ class Component implements AdminContract {
 	/**
 	 * menu()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function menu() {}
@@ -27,7 +27,7 @@ class Component implements AdminContract {
 	/**
 	 * callback()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function callback() {}
@@ -35,7 +35,7 @@ class Component implements AdminContract {
 	/**
 	 * tabs()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function tabs() {}
@@ -43,7 +43,7 @@ class Component implements AdminContract {
 	/**
 	 * pages()
 	 * 
-	 * @since  3.0.0
+	 * @since  1.0.0
 	 * @access public
 	 */
 	public function pages() {}

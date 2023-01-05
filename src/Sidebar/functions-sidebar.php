@@ -1,6 +1,6 @@
-<?php //phpcs:ignore
+<?php
 /**
- * Backdrop Core ( functions-view.php )
+ * Sidebar functions
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>

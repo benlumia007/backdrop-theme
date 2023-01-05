@@ -18,14 +18,14 @@ use Backdrop\Theme\Contracts\Menu\Menu as MenuContracts;
 /**
  * Regiser Menu Class
  * 
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  */
 class Component implements MenuContracts {
     /**
      * $menu_id
      * 
-     * @since  3.0.0
+     * @since  1.0.0
      * @access public
      * @return string $menu_id
      */
@@ -38,7 +38,7 @@ class Component implements MenuContracts {
     /**
      * Register Menus
      * 
-     * @since  3.0.0
+     * @since  1.0.0
      * @access public
      * @return void
      */
