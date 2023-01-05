@@ -64,7 +64,7 @@ class Component implements SidebarContract {
 		register_sidebar( $args );
 	}
 
-	public function boot() {
+	public function boot() : void {
 		add_action( 'widgets_init', [ $this, 'register' ] );
 	}
 }
