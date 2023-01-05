@@ -61,7 +61,7 @@ class Component implements MenuContracts {
 		register_nav_menus( $args );
 	}
 
-	public function boot() {
+	public function boot() : void {
 		add_action( 'after_setup_theme', [ $this, 'register' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
