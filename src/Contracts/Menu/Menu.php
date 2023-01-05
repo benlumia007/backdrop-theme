@@ -11,8 +11,8 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Contracts\Menu;
-use Benlumia007\Backdrop\Contracts\Bootable;
+namespace Backdrop\Theme\Contracts\Menu;
+use Backdrop\Contracts\Bootable;
 
 /**
  * Menu Interface

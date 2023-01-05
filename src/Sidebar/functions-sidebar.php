@@ -11,7 +11,7 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Sidebar;
+namespace Backdrop\Theme\Sidebar;
 
 
 function display( $type, $items = [] ) {

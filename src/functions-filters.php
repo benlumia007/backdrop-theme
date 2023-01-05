@@ -11,7 +11,7 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme;
+namespace Backdrop\Theme;
 
 # Add extra support for post types.
 add_action( 'init', __NAMESPACE__ . '\post_type_support' );

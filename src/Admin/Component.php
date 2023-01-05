@@ -11,8 +11,8 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Admin;
-use Benlumia007\Backdrop\Theme\Contracts\Admin\Admin as AdminContract;
+namespace Backdrop\Theme\Admin;
+use Backdrop\Theme\Contracts\Admin\Admin as AdminContract;
 
 class Component implements AdminContract {
 	/**

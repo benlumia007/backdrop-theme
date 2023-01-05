@@ -11,8 +11,8 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Contracts\Admin;
-use Benlumia007\Backdrop\Contracts\Bootable;
+namespace Backdrop\Theme\Contracts\Admin;
+use Backdrop\Contracts\Bootable;
 
 /**
  * Admin

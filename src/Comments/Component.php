@@ -11,7 +11,7 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Comments;
+namespace Backdrop\Theme\Comments;
 
 class Component {
     public static function display_comments_list( $comment, $args, $depth ) { ?>

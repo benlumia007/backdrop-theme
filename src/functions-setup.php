@@ -11,8 +11,8 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme;
-use function Benlumia007\Backdrop\Template\Helpers\path;
+namespace Backdrop\Theme;
+use function Backdrop\Template\Helpers\path;
 
 /**
  * Add Post Type Support

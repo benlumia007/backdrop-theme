@@ -11,7 +11,7 @@
 /**
  * Define namespace
  */
-namespace Benlumia007\Backdrop\Theme\Menu;
+namespace Backdrop\Theme\Menu;
 
 function display( $type, $items = [] ) {
 	foreach ( $items as $item ) {
