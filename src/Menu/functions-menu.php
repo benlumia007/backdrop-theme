@@ -30,7 +30,7 @@ function menu( $item ) {
 	if ( 'primary' === $item ) {
 		if ( has_nav_menu( 'primary' ) ) { ?>
 			<nav id="primaire" class="primary-navigation">
-				<button class="menu-toggle" aria-conrol="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'backdrop' ); ?></button>
+				<button class="menu-toggle" aria-control="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'backdrop' ); ?></button>
 				<?php
 					wp_nav_menu(
 						array(
