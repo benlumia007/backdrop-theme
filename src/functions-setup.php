@@ -62,6 +62,9 @@ function excerpt_more() {
  * Get the Archive Title
  */
 function archive_title() {
+
+    $title = '';
+
 	if ( is_category() ) {
 		$title = single_cat_title( '', false );
 	} elseif ( is_tag() ) {
