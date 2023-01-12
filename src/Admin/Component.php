@@ -13,9 +13,11 @@
  * Define namespace
  */
 namespace Backdrop\Theme\Admin;
-use Backdrop\Theme\Contracts\Admin\Admin as AdminContract;
 
-class Component implements AdminContract {
+use Backdrop\Contracts\Bootable;
+
+
+class Component implements Bootable {
 	/**
 	 * menu()
 	 * 
