@@ -13,7 +13,8 @@
  * Define namespace
  */
 namespace Backdrop\Theme\Menu;
-use Backdrop\Theme\Contracts\Menu\Menu as MenuContracts;
+
+use Backdrop\Contracts\Bootable;
 
 /**
  * Regiser Menu Class
@@ -21,17 +22,27 @@ use Backdrop\Theme\Contracts\Menu\Menu as MenuContracts;
  * @since  1.0.0
  * @access public
  */
-class Component implements MenuContracts {
+class Component implements Bootable {
+
     /**
      * $menu_id
      * 
      * @since  1.0.0
      * @access public
-     * @return string $menu_id
+     * @return array
      */
-    public $menu_id;
+    public array $menu_id;
 
-    public function __construct( $menu_id = [] ) {
+    /**
+     * $menu_id
+     *
+     * @since  1.0.0
+     * @access public
+     * @param array $menu_id
+     * @return void
+     */
+    public function __construct( array  $menu_id = [] ) {
+
         $this->menu_id = $this->menus();
     }
 
@@ -42,8 +53,9 @@ class Component implements MenuContracts {
      * @access public
      * @return void
      */
-    public function register() {
+    public function register(): void {
         foreach ( $this->menu_id as $key => $value ) {
+
             $this->create( $value, $key );
         }
     }
@@ -51,18 +63,22 @@ class Component implements MenuContracts {
 	/**
 	 * Create Menus
 	 *
+     * @since  1.0.0
+     * @access public
 	 * @param string $name outputs name.
 	 * @param string $id output id.
+     * @return void
 	 */
-	public function create( string $name, string $id ) {
+	public function create( string $name, string $id ): void {
 		$args = [
 			$id => $name,
 		];
 
-		register_nav_menus( $args );
+		register_nav_menus( apply_filters( 'backdrop/theme/menu', $args ) );
 	}
 
 	public function boot() : void {
+
 		add_action( 'after_setup_theme', [ $this, 'register' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
