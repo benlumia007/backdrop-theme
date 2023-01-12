@@ -13,33 +13,42 @@
  * Define namespace
  */
 namespace Backdrop\Theme\Sidebar;
-use Backdrop\Theme\Contracts\Sidebar\Sidebar as SidebarContract;
+
+use Backdrop\Contracts\Bootable;
 
 /**
  * Register Sidebar
  */
-class Component implements SidebarContract {
+class Component implements Bootable {
+
 	/**
 	 * $post post.
 	 *
-	 * @var string
+	 * @var array
 	 */
-	public $sidebar_id;
+	public array $sidebar_id;
 
 	/**
 	 * Construct
 	 *
-	 * @param array $sidebar_id array.
+	 * @param array $sidebar_id
 	 */
-	public function __construct( $sidebar_id = [] ) {
+	public function __construct( array $sidebar_id = [] ) {
+
 		$this->sidebar_id = $this->sidebars();
 	}
 
-	/**
-	 * Register Custom Sidebar
-	 */
-	public function register() {
+    /**
+     * Register Menus
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+	public function register(): void {
+
 		foreach ( $this->sidebar_id as $key => $value ) {
+
 			$this->create( $value['name'], $key, $value['desc'] );
 		}
 	}
@@ -47,11 +56,14 @@ class Component implements SidebarContract {
 	/**
 	 * Create Sidebar
 	 *
-	 * @param string $name outputs name.
-	 * @param string $id displays id for sidebar.
-	 * @param string $desc displays description.
+     * @since  1.0.0
+     * @access public
+	 * @param  string $name
+	 * @param  string $id
+	 * @param  string $desc
 	 */
 	public function create( string $name, string $id, string $desc ) {
+
 		$args = [
 			'name'          => $name,
 			'id'            => $id,
@@ -61,10 +73,19 @@ class Component implements SidebarContract {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		];
-		register_sidebar( $args );
+
+		register_sidebar( apply_filters( 'backdrop/theme/sidebar', $args ) );
 	}
 
+    /**
+     * Boot the Menus
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
 	public function boot() : void {
+
 		add_action( 'widgets_init', [ $this, 'register' ] );
 	}
 }

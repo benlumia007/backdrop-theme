@@ -77,6 +77,13 @@ class Component implements Bootable {
 		register_nav_menus( apply_filters( 'backdrop/theme/menu', $args ) );
 	}
 
+    /**
+     * Boot the Menus
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
 	public function boot() : void {
 
 		add_action( 'after_setup_theme', [ $this, 'register' ] );
