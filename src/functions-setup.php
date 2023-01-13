@@ -16,9 +16,17 @@ namespace Backdrop\Theme;
 use function Backdrop\Template\Helpers\path;
 
 /**
- * Add Post Type Support
+ * This function is for adding extra support for features not default to the core post types.
+ * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
+ * 'attachment' post type.  Technically, these are already used for attachments in core, but
+ * they're not registered.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
  */
-function post_type_support() {
+function post_type_support(): void {
+
     add_post_type_support( 'page', 'excerpt' );
 }
 
@@ -50,37 +58,23 @@ function comments_template( $template ) {
 }
 
 /**
- * Add excerpt more
+ * Filters the excerpt more output with internationalized text and a link to the post.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $text
+ * @return string
  */
-function excerpt_more() {
-	$more = ' ...';
+function excerpt_more( string $text ): string {
 
-	return esc_html( $more );
-}
+    if ( 0 !== strpos( $text, '<a' ) ) {
 
-/**
- * Get the Archive Title
- */
-function archive_title() {
+        $text = sprintf(
+            ' <a href="%s" class="entry__more-link">%s</a>',
+            esc_url( get_permalink() ),
+            trim( $text )
+        );
+    }
 
-    $title = '';
-
-	if ( is_category() ) {
-		$title = single_cat_title( '', false );
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
-	} elseif ( is_author() ) {
-		$title = get_the_author();
-	} elseif ( is_year() ) {
-		$title = get_the_date( _x( 'Y', 'yearly archives date format', 'backdrop' ) );
-	} elseif ( is_month() ) {
-		$title =get_the_date( _x( 'F Y', 'monthly archives date format', 'backdrop' ) );
-	} elseif ( is_day() ) {
-		$title = get_the_date( _x( 'F j Y', 'daily archives date format', 'backdrop' ) );
-	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
-	} elseif ( is_tax() ) {
-		$title = single_term_title( '', false );
-	}
-	return $title;
+    return $text;
 }

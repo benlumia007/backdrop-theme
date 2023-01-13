@@ -17,9 +17,6 @@ namespace Backdrop\Theme;
 # Add extra support for post types.
 add_action( 'init', __NAMESPACE__ . '\post_type_support' );
 
-# Filters for the archive title and description.
-add_filter( 'get_the_archive_title', __NAMESPACE__ . '\archive_title' );
-
 # Default excerpt more.
 add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more' );
 
