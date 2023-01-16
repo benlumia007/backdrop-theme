@@ -50,7 +50,7 @@ class Component implements Bootable {
 	 */
 	public function pages() {}
 
-    public function boot() {
+    public function boot(): void {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '1.0.0' );
     }
