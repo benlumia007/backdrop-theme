@@ -34,7 +34,7 @@ class Component implements Bootable {
      * @param WP_Customize_Manager $manager
      * @return void
      */
-    public function panels( WP_Customize_Manager $manager ): void {}
+    public function panels( WP_Customize_Manager $manager ) {}
 
     /**
      * Add our sections for customizer.
@@ -44,7 +44,7 @@ class Component implements Bootable {
      * @param WP_Customize_Manager $manager
      * @return void
      */
-    public function sections( WP_Customize_Manager $manager ): void {}
+    public function sections( WP_Customize_Manager $manager ) {}
 
     /**
      * Add our settings for customizer.
@@ -54,7 +54,7 @@ class Component implements Bootable {
      * @param WP_Customize_Manager $manager
      * @return void
      */
-    public function settings( WP_Customize_Manager $manager ): void {}
+    public function settings( WP_Customize_Manager $manager ) {}
 
     /**
      * Add our controls for customizer.
@@ -64,7 +64,7 @@ class Component implements Bootable {
      * @param WP_Customize_Manager $manager
      * @return void
      */
-    public function controls( WP_Customize_Manager $manager ): void {}
+    public function controls( WP_Customize_Manager $manager ) {}
 
     /**
      * Sets up the customizer manager actions and filters.
@@ -73,7 +73,7 @@ class Component implements Bootable {
      * @access public
      * @return void
      */
-    public function boot(): void {
+    public function boot() {
         add_action( 'customize_register', [ $this, 'panels' ] );
         add_action( 'customize_register', [ $this, 'sections' ] );
         add_action( 'customize_register', [ $this, 'settings' ] );
