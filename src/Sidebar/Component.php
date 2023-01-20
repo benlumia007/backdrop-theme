@@ -26,7 +26,7 @@ class Component implements Bootable {
 	 *
 	 * @var array
 	 */
-	public array $sidebar_id;
+	public $sidebar_id;
 
 	/**
 	 * Construct
@@ -45,7 +45,7 @@ class Component implements Bootable {
      * @access public
      * @return void
      */
-	public function register(): void {
+	public function register() {
 
 		foreach ( $this->sidebar_id as $key => $value ) {
 
@@ -84,7 +84,7 @@ class Component implements Bootable {
      * @access public
      * @return void
      */
-	public function boot() : void {
+	public function boot() {
 
 		add_action( 'widgets_init', [ $this, 'register' ] );
 	}

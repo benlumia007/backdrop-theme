@@ -17,7 +17,7 @@ namespace Backdrop\Theme\Menu;
 use Backdrop\Contracts\Bootable;
 
 /**
- * Regiser Menu Class
+ * Register Menu Class
  * 
  * @since  1.0.0
  * @access public
@@ -31,7 +31,7 @@ class Component implements Bootable {
      * @access public
      * @return array
      */
-    public array $menu_id;
+    public $menu_id;
 
     /**
      * $menu_id
@@ -53,7 +53,7 @@ class Component implements Bootable {
      * @access public
      * @return void
      */
-    public function register(): void {
+    public function register() {
         foreach ( $this->menu_id as $key => $value ) {
 
             $this->create( $value, $key );
@@ -69,7 +69,7 @@ class Component implements Bootable {
 	 * @param string $id output id.
      * @return void
 	 */
-	public function create( string $name, string $id ): void {
+	public function create( string $name, string $id ) {
 		$args = [
 			$id => $name,
 		];
@@ -84,7 +84,7 @@ class Component implements Bootable {
      * @access public
      * @return void
      */
-	public function boot() : void {
+	public function boot() {
 
 		add_action( 'after_setup_theme', [ $this, 'register' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );

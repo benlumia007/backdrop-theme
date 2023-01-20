@@ -25,7 +25,7 @@ use function Backdrop\Template\Helpers\path;
  * @access public
  * @return void
  */
-function post_type_support(): void {
+function post_type_support() {
 
     add_post_type_support( 'page', 'excerpt' );
 }
@@ -67,7 +67,7 @@ function comments_template( $template ) {
  */
 function excerpt_more( string $text ): string {
 
-    if (! str_starts_with( $text, '<a')) {
+    if ( 0 !== strpos( $text, '<a' ) ) {
 
         $text = sprintf(
             ' <a href="%s" class="entry__more-link">%s</a>',
