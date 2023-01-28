@@ -74,7 +74,7 @@ class Component implements Bootable {
 			'after_title'   => '</h2>',
 		];
 
-		register_sidebar( apply_filters( 'backdrop/theme/sidebar', $args ) );
+		register_sidebar( apply_filters( 'backdrop/theme/register/sidebar', $args ) );
 	}
 
     /**

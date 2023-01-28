@@ -17,42 +17,47 @@ namespace Backdrop\Theme\Admin;
 use Backdrop\Contracts\Bootable;
 
 
-class Component implements Bootable {
-	/**
-	 * menu()
-	 * 
-	 * @since  1.0.0
-	 * @access public
-	 */
-	public function menu() {}
-
-	/**
-	 * callback()
-	 * 
-	 * @since  1.0.0
-	 * @access public
-	 */
-	public function callback() {}
-
-	/**
-	 * tabs()
-	 * 
-	 * @since  1.0.0
-	 * @access public
-	 */
-	public function tabs() {}
-
-	/**
-	 * pages()
-	 * 
-	 * @since  1.0.0
-	 * @access public
-	 */
-	public function pages() {}
-
-    public function boot() {
-
-		add_action( 'admin_menu', array( $this, 'menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '1.0.0' );
+abstract class Component implements Bootable
+{
+    /**
+     * menu()
+     *
+     * @since  1.0.0
+     * @access public
+     */
+    public function menu()
+    {
     }
+
+    /**
+     * callback()
+     *
+     * @since  1.0.0
+     * @access public
+     */
+    public function callback()
+    {
+    }
+
+    /**
+     * tabs()
+     *
+     * @since  1.0.0
+     * @access public
+     */
+    public function tabs()
+    {
+    }
+
+    /**
+     * pages()
+     *
+     * @since  1.0.0
+     * @access public
+     */
+    public function pages()
+    {
+    }
+
+    public function boot() {}
 }

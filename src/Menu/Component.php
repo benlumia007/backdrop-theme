@@ -74,7 +74,7 @@ class Component implements Bootable {
 			$id => $name,
 		];
 
-		register_nav_menus( apply_filters( 'backdrop/theme/menu', $args ) );
+		register_nav_menus( apply_filters( 'backdrop/theme/register/menu', $args ) );
 	}
 
     /**
