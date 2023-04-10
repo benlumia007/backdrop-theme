@@ -61,6 +61,47 @@ function render_site_title( array $args = [] ) {
 }
 
 /**
+ * Outputs the site description HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_site_description( array $args = [] ) {
+
+	echo render_site_description( $args );
+}
+
+/**
+ * Returns the site description HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_site_description( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'tag'       => 'span',
+		'class'      => 'site-description',
+	] );
+
+	$html = '';
+	$title = get_bloginfo( 'description', 'display' );
+
+	if ( $title ) {
+		$html = sprintf(
+			'<%1$s class="%2$s">%3$s</%1$s>',
+			tag_escape( $args['tag'] ),
+			esc_attr( $args['class'] ),
+			$title
+		);
+	}
+	return apply_filters( 'backdrop/render/site/description', $html );
+}
+
+/**
  * Outputs the site link HTML.
  *
  * @since  1.0.0
