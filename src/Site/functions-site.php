@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Sidebar/Sidebar.php )
+ * Backdrop
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -43,6 +43,7 @@ function render_site_title( array $args = [] ) {
 	] );
 
 	$html = '';
+
 	$title = get_bloginfo( 'name', 'display' );
 
 	if ( $title ) {
@@ -54,9 +55,10 @@ function render_site_title( array $args = [] ) {
 			'<%1$s class="%2$s">%3$s</%1$s>',
 			tag_escape( $args['tag'] ),
 			esc_attr( $args['class'] ),
-			$link // phpcs:ignore
+			$link
 		);
 	}
+
 	return apply_filters( 'backdrop/render/site/title', $html );
 }
 
@@ -82,6 +84,7 @@ function display_site_description( array $args = [] ) {
  * @return void
  */
 function render_site_description( array $args = [] ) {
+
 	$args = wp_parse_args( $args, [
 		'tag'       => 'span',
 		'class'      => 'site-description',
@@ -98,6 +101,7 @@ function render_site_description( array $args = [] ) {
 			$title
 		);
 	}
+
 	return apply_filters( 'backdrop/render/site/description', $html );
 }
 
@@ -144,7 +148,8 @@ function render_site_link( array $args = [] ) {
 }
 
 function display_theme_link( array $args = [] ) {
-	echo render_theme_link( $args ); // phpcs:ignore
+
+	echo render_theme_link( $args );
 }
 
 /**
@@ -156,6 +161,7 @@ function display_theme_link( array $args = [] ) {
  * @return void
  */
 function render_theme_link( array $args = [] ) {
+    
 	$args = wp_parse_args( $args, [
 		'class'  => 'theme-link',
 		'before' => '',
