@@ -23,7 +23,8 @@ namespace Backdrop\Theme\Site;
  * @return void
  */
 function display_site_title( array $args = [] ) {
-	echo render_site_title( $args ); // phpcs:ignore
+
+	echo render_site_title( $args );
 }
 
 /**
@@ -35,6 +36,7 @@ function display_site_title( array $args = [] ) {
  * @return void
  */
 function render_site_title( array $args = [] ) {
+
 	$args = wp_parse_args( $args, [
 		'tag'       => 'h1',
 		'class'      => 'site-title',
@@ -55,5 +57,44 @@ function render_site_title( array $args = [] ) {
 			$link // phpcs:ignore
 		);
 	}
-	return apply_filters( 'succotash/render/site/title', $html );
+	return apply_filters( 'backdrop/render/site/title', $html );
+}
+
+/**
+ * Outputs the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_home_link( array $args = [] ) {
+
+	echo render_home_link( $args );
+}
+
+/**
+ * Returns the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return string
+ */
+function render_home_link( array $args = [] ) {
+
+	$args = wp_parse_args( $args, [
+		'text'   => '%s',
+		'class'  => 'home-link',
+		'before' => '',
+		'after'  => ''
+	] );
+
+	$html = sprintf(
+		'<a class="%s" href="%s" rel="home">%s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( home_url() ),
+		sprintf( $args['text'], get_bloginfo( 'name', 'display' ) )
+	);
+	return apply_filters( 'backdrop/render/home/link', $args['before'] . $html . $args['after'] );
 }
