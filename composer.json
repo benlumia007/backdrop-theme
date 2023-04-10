@@ -19,6 +19,7 @@
           "Backdrop\\Theme\\": "src/"
 		},
 		"files": [
+            "src/Site/functions-site.php",
             "src/functions-filters.php",
             "src/functions-setup.php"
 		]
