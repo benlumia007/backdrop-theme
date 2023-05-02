@@ -13,3 +13,9 @@
  * Define namespace
  */
 namespace Backdrop\Theme;
+
+add_action( 'after_setup_theme', function() {
+
+	// Automatically add the `<title>` tag.
+	add_theme_support( 'title-tag' );
+} );
