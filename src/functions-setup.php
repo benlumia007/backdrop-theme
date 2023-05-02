@@ -100,11 +100,6 @@ function body_class_filter( $classes, $class ) {
 		$classes[] = 'blog-' . get_current_blog_id();
 	}
 
-	// Plural/multiple-post view (opposite of singular).
-	if ( is_home() || is_archive() || is_search() ) {
-		$classes[] = 'plural';
-	}
-
 	// Front page of the site.
 	if ( is_front_page() ) {
 		$classes[] = 'home';
