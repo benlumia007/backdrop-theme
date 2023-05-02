@@ -12,6 +12,20 @@
 namespace Backdrop\Theme;
 
 /**
+ * Adds the meta charset to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_charset() {
+	echo apply_filters(
+		'backdrop/theme/head/meta/charset',
+		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
+	);
+}
+
+/**
  * Adds the pingback link to the header.
  *
  * @since  1.0.0
