@@ -9,9 +9,6 @@
  * @link      https://github.com/benlumia007/backdrop-theme
  */
 
-/**
- * Define namespace
- */
 namespace Backdrop\Theme;
 
 /**
@@ -24,7 +21,7 @@ namespace Backdrop\Theme;
 function meta_charset() {
 	echo apply_filters(
 		'backdrop/theme/head/meta/charset',
-		printf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
+		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
 	);
 }
 
