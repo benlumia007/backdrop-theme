@@ -19,10 +19,7 @@ namespace Backdrop\Theme;
  * @return void
  */
 function meta_charset() {
-	echo apply_filters(
-		'backdrop/theme/head/meta/charset',
-		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
-	);
+    echo "shit";
 }
 
 /**
