@@ -94,16 +94,6 @@ function body_class_filter( $classes, $class ) {
 
 	$classes = [];
 
-	// Locale and language.
-	$locale = get_locale();
-	$lang   = substr( $locale, 0, strpos( $locale, '_' ) );
-
-	if ( $lang && $locale !== $lang ) {
-		$classes[] = $lang;
-	}
-
-	$classes[] = strtolower( str_replace( '_', '-', $locale ) );
-
 	// Multisite check adds the 'multisite' class and the blog ID.
 	if ( is_multisite() ) {
 		$classes[] = 'multisite';
