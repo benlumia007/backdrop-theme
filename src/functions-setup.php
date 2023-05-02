@@ -15,6 +15,75 @@
 namespace Backdrop\Theme;
 use function Backdrop\Template\Helpers\path;
 
+/**
+ * Adds the meta charset to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_charset() {
+	echo apply_filters(
+		'hybrid/theme/head/meta/charset',
+		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
+	);
+}
+
+/**
+ * Adds the meta viewport to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_viewport() {
+	echo apply_filters(
+		'hybrid/theme/head/meta/viewport',
+		'<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n"
+	);
+}
+
+/**
+ * Adds the theme generator meta tag.  This is particularly useful for checking
+ * theme users' version when handling support requests.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_generator() {
+	$theme = wp_get_theme( \get_template() );
+
+	$generator = sprintf(
+		'<meta name="generator" content="%s %s" />' . "\n",
+		esc_attr( $theme->get( 'Name' ) ),
+		esc_attr( $theme->get( 'Version' ) )
+	);
+
+	echo apply_filters( 'hybrid/theme/head/meta/generator', $generator );
+}
+
+/**
+ * Adds the pingback link to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function link_pingback() {
+
+	$link = '';
+
+	if ( 'open' === get_option( 'default_ping_status' ) ) {
+		$link = sprintf(
+			'<link rel="pingback" href="%s" />' . "\n",
+			esc_url( get_bloginfo( 'pingback_url' ) )
+		);
+	}
+
+	echo apply_filters( 'hybrid/theme/head/link/pingback', $link );
+}
+
 
 /**
  * This function is for adding extra support for features not default to the core post types.
