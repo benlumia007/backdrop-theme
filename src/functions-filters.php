@@ -12,34 +12,6 @@
 namespace Backdrop\Theme;
 
 /**
- * Adds the meta charset to the header.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
-function meta_charset() {
-	echo apply_filters(
-		'backdrop/theme/head/meta/charset',
-		sprintf( '<meta http-equiv="Content-Type" charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
-	);
-}
-
-/**
- * Adds the meta viewport to the header.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
-function meta_viewport() {
-	echo apply_filters(
-		'hybrid/theme/head/meta/viewport',
-		'<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n"
-	);
-}
-
-/**
  * Adds the theme generator meta tag.  This is particularly useful for checking
  * theme users' version when handling support requests.
  *
