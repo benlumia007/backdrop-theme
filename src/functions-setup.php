@@ -15,11 +15,6 @@
 namespace Backdrop\Theme;
 use function Backdrop\Template\Helpers\path;
 
-add_action( 'after_setup_theme', function() {
-
-	add_theme_support( 'title-tag' );
-} );
-
 /**
  * This function is for adding extra support for features not default to the core post types.
  * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
