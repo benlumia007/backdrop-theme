@@ -24,10 +24,10 @@ add_action( 'init', __NAMESPACE__ . '\post_type_support', 15 );
 add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more', 5 );
 
 # Adds common theme items to <head>.
-add_action( 'wp_head', __NAMESPACE__ . '\meta_charset',   0 );
-add_action( 'wp_head', __NAMESPACE__ . '\meta_viewport',  1 );
-add_action( 'wp_head', __NAMESPACE__ . '\meta_generator', 1 );
-add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  3 );
+// add_action( 'wp_head', __NAMESPACE__ . '\meta_charset',   0 );
+// add_action( 'wp_head', __NAMESPACE__ . '\meta_viewport',  1 );
+// add_action( 'wp_head', __NAMESPACE__ . '\meta_generator', 1 );
+// add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  3 );
 
 # Filter the comments template
 add_filter( 'comments_template', __NAMESPACE__ . '\comments_template' );
