@@ -12,6 +12,27 @@
 namespace Backdrop\Theme;
 
 /**
+ * Adds the pingback link to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function link_pingback() {
+
+	$link = '';
+
+	if ( 'open' === get_option( 'default_ping_status' ) ) {
+		$link = sprintf(
+			'<link rel="pingback" href="%s" />' . "\n",
+			esc_url( get_bloginfo( 'pingback_url' ) )
+		);
+	}
+
+	echo apply_filters( 'backdrop/theme/head/link/pingback', $link );
+}
+
+/**
  * Filters the WordPress body class with a better set of classes that are more
  * consistently handled and are backwards compatible with the original body
  * class functionality that existed prior to WordPress core adopting this feature.
