@@ -24,7 +24,7 @@ namespace Backdrop\Theme;
 function meta_charset() {
 	echo apply_filters(
 		'backdrop/theme/head/meta/charset',
-		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
+		sprintf( '<meta charset="%s" />', esc_attr( get_bloginfo( 'charset' ) ) )
 	);
 }
 
