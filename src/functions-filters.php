@@ -14,6 +14,76 @@
  */
 namespace Backdrop\Theme;
 
+/**
+ * Adds the meta charset to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_charset() {
+	echo apply_filters(
+		'backdrop/theme/head/meta/charset',
+		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
+	);
+}
+
+/**
+ * Adds the meta viewport to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_viewport() {
+	echo apply_filters(
+		'backdrop/theme/head/meta/viewport',
+		'<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n"
+	);
+}
+
+/**
+ * Adds the theme generator meta tag.  This is particularly useful for checking
+ * theme users' version when handling support requests.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function meta_generator() {
+	$theme = wp_get_theme( \get_template() );
+
+	$generator = sprintf(
+		'<meta name="generator" content="%s %s" />' . "\n",
+		esc_attr( $theme->get( 'Name' ) ),
+		esc_attr( $theme->get( 'Version' ) )
+	);
+
+	echo apply_filters( 'backdrop/theme/head/meta/generator', $generator );
+}
+
+/**
+ * Adds the pingback link to the header.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function link_pingback() {
+
+	$link = '';
+
+	if ( 'open' === get_option( 'default_ping_status' ) ) {
+		$link = sprintf(
+			'<link rel="pingback" href="%s" />' . "\n",
+			esc_url( get_bloginfo( 'pingback_url' ) )
+		);
+	}
+
+	echo apply_filters( 'backdrop/theme/head/link/pingback', $link );
+}
+
+
 # Filters the WordPress element classes.
 // add_filter( 'body_class',    __NAMESPACE__ . '\body_class_filter',    ~PHP_INT_MAX, 2 );
 
@@ -22,12 +92,6 @@ namespace Backdrop\Theme;
 
 # Default excerpt more.
 // add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more', 5 );
-
-# Adds common theme items to <head>.
-// add_action( 'wp_head', __NAMESPACE__ . '\meta_charset',   0 );
-// add_action( 'wp_head', __NAMESPACE__ . '\meta_viewport',  1 );
-// add_action( 'wp_head', __NAMESPACE__ . '\meta_generator', 1 );
-// add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  3 );
 
 # Filter the comments template
 // add_filter( 'comments_template', __NAMESPACE__ . '\comments_template' );
