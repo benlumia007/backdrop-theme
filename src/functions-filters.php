@@ -12,26 +12,6 @@
 namespace Backdrop\Theme;
 
 /**
- * Adds the theme generator meta tag.  This is particularly useful for checking
- * theme users' version when handling support requests.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
-function meta_generator() {
-	$theme = wp_get_theme( \get_template() );
-
-	$generator = sprintf(
-		'<meta name="generator" content="%s %s" />' . "\n",
-		esc_attr( $theme->get( 'Name' ) ),
-		esc_attr( $theme->get( 'Version' ) )
-	);
-
-	echo apply_filters( 'backdrop/theme/head/meta/generator', $generator );
-}
-
-/**
  * Adds the pingback link to the header.
  *
  * @since  1.0.0
