@@ -124,7 +124,6 @@ function body_class_filter( $classes, $class ) {
 
 		$classes[] = "${post_type}";
 		$classes[] = "single-{$post_type}";
-		$classes[] = "single-{$post_type}-{$post_id}";
 
 		// Checks for custom template.
 		$template = str_replace(
