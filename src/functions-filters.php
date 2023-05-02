@@ -12,20 +12,6 @@
 namespace Backdrop\Theme;
 
 /**
- * Adds the meta viewport to the header.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
-function meta_viewport() {
-	echo apply_filters(
-		'backdrop/theme/head/meta/viewport',
-		'<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n"
-	);
-}
-
-/**
  * Adds the theme generator meta tag.  This is particularly useful for checking
  * theme users' version when handling support requests.
  *
