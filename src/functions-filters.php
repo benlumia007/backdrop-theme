@@ -22,3 +22,6 @@ add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more' );
 
 # Filter the comments template
 add_filter( 'comments_template', __NAMESPACE__ . '\comments_template' );
+
+# Filters the WordPress element classes.
+add_filter( 'body_class',    __NAMESPACE__ . '\body_class_filter',    ~PHP_INT_MAX, 2 );
