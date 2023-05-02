@@ -24,7 +24,7 @@ use function Backdrop\Template\Helpers\path;
  */
 function meta_charset() {
 	echo apply_filters(
-		'hybrid/theme/head/meta/charset',
+		'backdrop/theme/head/meta/charset',
 		sprintf( '<meta charset="%s" />' . "\n", esc_attr( get_bloginfo( 'charset' ) ) )
 	);
 }
@@ -38,7 +38,7 @@ function meta_charset() {
  */
 function meta_viewport() {
 	echo apply_filters(
-		'hybrid/theme/head/meta/viewport',
+		'backdrop/theme/head/meta/viewport',
 		'<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n"
 	);
 }
@@ -60,7 +60,7 @@ function meta_generator() {
 		esc_attr( $theme->get( 'Version' ) )
 	);
 
-	echo apply_filters( 'hybrid/theme/head/meta/generator', $generator );
+	echo apply_filters( 'backdrop/theme/head/meta/generator', $generator );
 }
 
 /**
@@ -81,7 +81,7 @@ function link_pingback() {
 		);
 	}
 
-	echo apply_filters( 'hybrid/theme/head/link/pingback', $link );
+	echo apply_filters( 'backdrop/theme/head/link/pingback', $link );
 }
 
 
