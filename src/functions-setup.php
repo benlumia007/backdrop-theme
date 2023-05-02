@@ -94,9 +94,6 @@ function body_class_filter( $classes, $class ) {
 
 	$classes = [];
 
-	// Text direction.
-	$classes[] = is_rtl() ? 'rtl' : 'ltr';
-
 	// Locale and language.
 	$locale = get_locale();
 	$lang   = substr( $locale, 0, strpos( $locale, '_' ) );
