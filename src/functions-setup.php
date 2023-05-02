@@ -14,8 +14,8 @@
  */
 namespace Backdrop\Theme;
 
-add_action( 'after_setup_theme', function() {
-
+function backdrop_theme_setup() {
 	// Automatically add the `<title>` tag.
 	add_theme_support( 'title-tag' );
-} );
+}
+add_action( 'after_setup_theme', 'backdrop_theme_setup' ); 
