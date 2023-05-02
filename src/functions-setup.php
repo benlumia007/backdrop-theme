@@ -122,7 +122,6 @@ function body_class_filter( $classes, $class ) {
 		$post_id   = get_queried_object_id();
 		$post_type = $post->post_type;
 
-		$classes[] = "${post_type}";
 		$classes[] = "single-{$post_type}";
 
 		// Checks for custom template.
