@@ -28,6 +28,6 @@ class Provider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
-		require_once 'vendor/benlumia007/backdrop/theme/bootstrap-filters.php';
+		require_once 'bootstrap-filters.php';
 	}
 }
