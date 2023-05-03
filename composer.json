@@ -21,8 +21,7 @@
 		"files": [
             "src/Entry/functions-entry.php",
             "src/Site/functions-site.php",
-            "src/functions-filters.php",
-            "src/functions-setup.php"
+            "src/functions-filters.php"
 		]
     },
     "require": {
