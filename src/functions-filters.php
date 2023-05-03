@@ -246,11 +246,42 @@ function body_class_filter( $classes, $class ) {
 	return array_map( 'esc_attr', array_unique( array_merge( $classes, (array) $class ) ) );
 }
 
-# Add extra support for post types.
-// add_action( 'init', __NAMESPACE__ . '\post_type_support', 15 );
+/**
+ * This function is for adding extra support for features not default to the core post types.
+ * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
+ * 'attachment' post type.  Technically, these are already used for attachments in core, but
+ * they're not registered.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function post_type_support() {
 
-# Default excerpt more.
-// add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more', 5 );
+    add_post_type_support( 'page', 'excerpt' );
+}
+
+/**
+ * Filters the excerpt more output with internationalized text and a link to the post.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $text
+ * @return string
+ */
+function excerpt_more( $text ) {
+
+	if ( 0 !== strpos( $text, '<a' ) ) {
+
+		$text = sprintf(
+			' <a href="%s" class="entry__more-link">%s</a>',
+			esc_url( get_permalink() ),
+			trim( $text )
+		);
+	}
+
+	return $text;
+}
 
 /**
  * Overrides the default comments template.  This filter allows for a
