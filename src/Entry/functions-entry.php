@@ -14,6 +14,52 @@
  */
 namespace Backdrop\Theme\Entry;
 
+/**
+ * Creates a hierarchy based on the current post. Its primary purpose is for
+ * use with post views/templates.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return array
+ */
+function hierarchy() {
+
+	// Set up an empty array and get the post type.
+	$hierarchy = [];
+	$post_type = get_post_type();
+
+	// If attachment, add attachment type templates.
+	if ( 'attachment' === $post_type ) {
+
+		extract( mime_types() );
+
+		if ( $subtype ) {
+			$hierarchy[] = "attachment-{$type}-{$subtype}";
+			$hierarchy[] = "attachment-{$subtype}";
+		}
+
+		$hierarchy[] = "attachment-{$type}";
+	}
+
+	// If the post type supports 'post-formats', get the template based on the format.
+	if ( post_type_supports( $post_type, 'post-formats' ) ) {
+
+		// Get the post format.
+		$post_format = get_post_format() ?: 'standard';
+
+		// Template based off post type and post format.
+		$hierarchy[] = "{$post_type}-{$post_format}";
+
+		// Template based off the post format.
+		$hierarchy[] = $post_format;
+	}
+
+	// Template based off the post type.
+	$hierarchy[] = $post_type;
+
+	return apply_filters( 'hybrid/theme/post/hierarchy', $hierarchy );
+}
+
 function display_title( array $args = [] ) {
 	echo render_title( $args ); // phpcs:ignore
 }
