@@ -17,3 +17,6 @@ add_filter( 'body_class',    __NAMESPACE__ . '\body_class_filter',    ~PHP_INT_M
 # Adds common theme items to <head>.
 add_action( 'wp_head', __NAMESPACE__ . '\meta_generator', 0 );
 add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  0 );
+
+# Filter the comments template.
+add_filter( 'comments_template', __NAMESPACE__ . '\comments_template', 5 );

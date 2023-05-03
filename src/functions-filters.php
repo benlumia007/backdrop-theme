@@ -10,6 +10,7 @@
  */
 
 namespace Backdrop\Theme;
+use Backdrop\Template\Helpers\locate as locate_template;
 
 /**
  * Adds the theme generator meta tag.  This is particularly useful for checking
@@ -251,5 +252,35 @@ function body_class_filter( $classes, $class ) {
 # Default excerpt more.
 // add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more', 5 );
 
-# Filter the comments template
-// add_filter( 'comments_template', __NAMESPACE__ . '\comments_template' );
+/**
+ * Overrides the default comments template.  This filter allows for a
+ * `comments-{$post_type}.php` template based on the post type of the current
+ * single post view.  If this template is not found, it falls back to the
+ * default `comments.php` template.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string $template
+ * @return string
+ */
+function comments_template( $template ) {
+
+	$templates = [];
+
+	// Allow for custom templates entered into comments_template( $file ).
+	$template = str_replace( trailingslashit( get_stylesheet_directory() ), '', $template );
+
+	if ( 'comments.php' !== $template ) {
+		$templates[] = $template;
+	}
+
+	// Add a comments template based on the post type.
+	$templates[] = sprintf( 'comments/%s.php', get_post_type() );
+
+	// Add the default comments template.
+	$templates[] = 'comments/default.php';
+	$templates[] = 'comments.php';
+
+	// Return the found template.
+	return locate_template( $templates );
+}
