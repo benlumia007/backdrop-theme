@@ -10,7 +10,7 @@
  */
 
 namespace Backdrop\Theme;
-use Backdrop\Template\Helpers\locate as locate_template;
+use function Backdrop\Template\Helpers\locate as locate_template;
 
 /**
  * Adds the theme generator meta tag.  This is particularly useful for checking
