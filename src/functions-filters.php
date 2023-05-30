@@ -315,3 +315,8 @@ function comments_template( $template ) {
 	// Return the found template.
 	return locate_template( $templates );
 }
+
+function is_plugin_active( $plugin ) {
+
+	return in_array( $plugin, get_option( 'active_plugins', [] ) );
+}
