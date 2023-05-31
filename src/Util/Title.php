@@ -45,6 +45,8 @@ class Title {
         } elseif ( is_404() ) {
             $title = static::error();
         }
+
+        return $title;
     }
 
     /**
