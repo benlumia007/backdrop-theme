@@ -11,6 +11,7 @@
 
 namespace Backdrop\Theme;
 use function Backdrop\Template\Helpers\locate as locate_template;
+use Backdrop\Theme\Util\Title;
 
 /**
  * Adds the theme generator meta tag.  This is particularly useful for checking
