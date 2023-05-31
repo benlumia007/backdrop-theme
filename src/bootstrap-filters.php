@@ -16,6 +16,8 @@ add_filter( 'body_class',    __NAMESPACE__ . '\body_class_filter',    ~PHP_INT_M
 
 # Filters the archive title and description.
 add_filter( 'get_the_archive_title',       __NAMESPACE__ . '\archive_title_filter', 5 );
+add_filter( 'get_the_archive_description', __NAMESPACE__ . '\archive_description_filter', 0           );
+add_filter( 'get_the_archive_description', __NAMESPACE__ . '\archive_description_format', PHP_INT_MAX );
 
 # Add extra support for post types.
 add_action( 'init', __NAMESPACE__ . '\post_type_support', 15 );

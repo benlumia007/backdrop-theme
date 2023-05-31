@@ -333,3 +333,49 @@ function is_plugin_active( $plugin ) {
 function archive_title_filter( $title ) {
 	return apply_filters( 'backdrop/theme/archive/title', Title::current() );
 }
+
+/**
+ * Filters `get_the_archve_description` to add better archive descriptions than core.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $desc
+ * @return string
+ */
+function archive_description_filter( $desc ) {
+
+	$new_desc = '';
+
+	if ( is_home() && ! is_front_page() ) {
+		$new_desc = get_post_field( 'post_content', get_queried_object_id(), 'raw' );
+
+	} elseif ( is_category() ) {
+		$new_desc = get_term_field( 'description', get_queried_object_id(), 'category', 'raw' );
+
+	} elseif ( is_tag() ) {
+		$new_desc = get_term_field( 'description', get_queried_object_id(), 'post_tag', 'raw' );
+
+	} elseif ( is_tax() ) {
+		$new_desc = get_term_field( 'description', get_queried_object_id(), get_query_var( 'taxonomy' ), 'raw' );
+
+	} elseif ( is_author() ) {
+		$new_desc = get_the_author_meta( 'description', get_query_var( 'author' ) );
+
+	} elseif ( is_post_type_archive() ) {
+		$new_desc = get_the_post_type_description();
+	}
+
+	return $new_desc ?: $desc;
+}
+
+/**
+ * Filters `get_the_archve_description` to add custom formatting.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $desc
+ * @return string
+ */
+function archive_description_format( $desc ) {
+	return apply_filters( 'hybrid/theme/archive/description', $desc );
+}
