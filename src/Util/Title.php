@@ -123,7 +123,7 @@ class Title {
 		} elseif ( is_year() ) {
 			$title = static::year();
 		} else {
-			$title = esc_html__( 'Archives', 'hybrid-core' );
+			$title = esc_html__( 'Archives', 'backdrop' );
 		}
 
 		return $title;
@@ -139,7 +139,7 @@ class Title {
 	public static function search() {
 		return sprintf(
 			// Translators: %s is the search query.
-			esc_html__( 'Search results for: %s', 'hybrid-core' ),
+			esc_html__( 'Search results for: %s', 'backdrop' ),
 			get_search_query()
 		);
 	}
@@ -152,7 +152,7 @@ class Title {
 	 * @return string
 	 */
 	public static function error() {
-		return esc_html__( '404 Not Found', 'hybrid-core' );
+		return esc_html__( '404 Not Found', 'backdrop' );
 	}
 
 	/**
@@ -207,7 +207,7 @@ class Title {
 	 * @return string
 	 */
 	public static function year() {
-		return get_the_date( esc_html_x( 'Y', 'yearly archives date format', 'hybrid-core' ) );
+		return get_the_date( esc_html_x( 'Y', 'yearly archives date format', 'backdrop' ) );
 	}
 
 	/**
@@ -220,9 +220,9 @@ class Title {
 	public static function week() {
 		return sprintf(
 			// Translators: 1 is the week number and 2 is the year.
-			esc_html__( 'Week %1$s of %2$s', 'hybrid-core' ),
-			get_the_time( esc_html_x( 'W', 'weekly archives date format', 'hybrid-core' ) ),
-			get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'hybrid-core' ) )
+			esc_html__( 'Week %1$s of %2$s', 'backdrop' ),
+			get_the_time( esc_html_x( 'W', 'weekly archives date format', 'backdrop' ) ),
+			get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'backdrop' ) )
 		);
 	}
 
@@ -234,7 +234,7 @@ class Title {
 	 * @return string
 	 */
 	public static function day() {
-		return get_the_date( esc_html_x( 'F j, Y', 'daily archives date format', 'hybrid-core' ) );
+		return get_the_date( esc_html_x( 'F j, Y', 'daily archives date format', 'backdrop' ) );
 	}
 
 	/**
@@ -245,7 +245,7 @@ class Title {
 	 * @return string
 	 */
 	public static function hour() {
-		return get_the_time( esc_html_x( 'g a', 'hour archives time format', 'hybrid-core' ) );
+		return get_the_time( esc_html_x( 'g a', 'hour archives time format', 'backdrop' ) );
 	}
 
 	/**
@@ -258,8 +258,8 @@ class Title {
 	public static function minute() {
 		return sprintf(
 			// Translators: Minute archive title. %s is the minute time format.
-			esc_html__( 'Minute %s', 'hybrid-core' ),
-			get_the_time( esc_html_x( 'i', 'minute archives time format', 'hybrid-core' ) )
+			esc_html__( 'Minute %s', 'backdrop' ),
+			get_the_time( esc_html_x( 'i', 'minute archives time format', 'backdrop' ) )
 		);
 	}
 
@@ -271,6 +271,6 @@ class Title {
 	 * @return string
 	 */
 	public static function minuteHour() {
-		return get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'hybrid-core' ) );
+		return get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'backdrop' ) );
 	}
 }

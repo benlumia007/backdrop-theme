@@ -30,7 +30,7 @@ function meta_generator() {
 		esc_attr( $theme->get( 'Version' ) )
 	);
 
-	echo apply_filters( 'hybrid/theme/head/meta/generator', $generator );
+	echo apply_filters( 'backdrop/theme/head/meta/generator', $generator );
 }
 
 /**
@@ -377,5 +377,5 @@ function archive_description_filter( $desc ) {
  * @return string
  */
 function archive_description_format( $desc ) {
-	return apply_filters( 'hybrid/theme/archive/description', $desc );
+	return apply_filters( 'backdrop/theme/archive/description', $desc );
 }
