@@ -25,6 +25,9 @@ add_action( 'init', __NAMESPACE__ . '\post_type_support', 15 );
 # Default excerpt more.
 add_filter( 'excerpt_more', __NAMESPACE__ . '\excerpt_more', 5 );
 
+# Filters the title for untitled posts.
+add_filter( 'the_title', __NAMESPACE__ . '\untitled_post' );
+
 # Adds common theme items to <head>.
 add_action( 'wp_head', __NAMESPACE__ . '\meta_generator', 0 );
 add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  0 );

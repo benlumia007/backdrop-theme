@@ -379,3 +379,24 @@ function archive_description_filter( $desc ) {
 function archive_description_format( $desc ) {
 	return apply_filters( 'backdrop/theme/archive/description', $desc );
 }
+
+/**
+ * The WordPress.org theme review requires that a link be provided to the single
+ * post page for untitled posts.  This is a filter on 'the_title' so that an
+ * `(Untitled)` title appears in that scenario, allowing for the normal method
+ * to work.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $title
+ * @return string
+ */
+function untitled_post( $title ) {
+
+	// Translators: Used as a placeholder for untitled posts on non-singular views.
+	if ( ! $title && ! is_singular() && in_the_loop() && ! is_admin() ) {
+		$title = esc_html__( '(Untitled)', 'backdrop' );
+	}
+
+	return $title;
+}
