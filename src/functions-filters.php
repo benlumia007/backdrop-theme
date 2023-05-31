@@ -320,3 +320,15 @@ function is_plugin_active( $plugin ) {
 
 	return in_array( $plugin, get_option( 'active_plugins', [] ) );
 }
+
+/**
+ * Filters `get_the_archve_title` to add better archive titles than core.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $title
+ * @return string
+ */
+function archive_title_filter( $title ) {
+	return apply_filters( 'backdrop/theme/archive/title', Title::current() );
+}

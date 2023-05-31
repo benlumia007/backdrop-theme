@@ -14,6 +14,9 @@
 # Filters the WordPress element classes.
 add_filter( 'body_class',    __NAMESPACE__ . '\body_class_filter',    ~PHP_INT_MAX, 2 );
 
+# Filters the archive title and description.
+add_filter( 'get_the_archive_title',       __NAMESPACE__ . '\archive_title_filter', 5 );
+
 # Add extra support for post types.
 add_action( 'init', __NAMESPACE__ . '\post_type_support', 15 );
 
