@@ -122,6 +122,8 @@ class Title {
 
 		} elseif ( is_year() ) {
 			$title = static::year();
+		} elseif ( ! is_singular() ) { 
+			$title = static::untitled();
 		} else {
 			$title = esc_html__( 'Archives', 'backdrop' );
 		}
@@ -272,5 +274,16 @@ class Title {
 	 */
 	public static function minuteHour() {
 		return get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'backdrop' ) );
+	}
+
+	/**
+	 * Retrieve the minute + hour archive title.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
+	 */
+	public static function untitled() {
+		return esc_html__( '(Untitled)', 'backdrop' );
 	}
 }
