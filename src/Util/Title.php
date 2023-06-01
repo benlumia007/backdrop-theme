@@ -185,7 +185,7 @@ class Title {
 	 * @return string
 	 */
 	public static function month() {
-		return single_month_title( ' ', false );
+		return get_the_date( esc_html_x( 'F Y', 'monthly archives date format', 'backdrop' ) );
 	}
 
 	/**
