@@ -11,7 +11,7 @@
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-namespace Hybrid\Theme\Comment;
+namespace Backdrop\Theme\Comment;
 
 /**
  * Returns a hierarchy for the current comment.
