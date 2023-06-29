@@ -1,6 +1,7 @@
 <?php 
 
 
+require_once 'Comment/functions-comment.php';
 require_once 'Entry/functions-entry.php';
 require_once 'Site/functions-site.php';
 require_once 'functions-filters.php';
