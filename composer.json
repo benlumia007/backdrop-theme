@@ -17,10 +17,7 @@
           "Backdrop\\Theme\\": "src/"
 		},
 		"files": [
-            "src/Entry/functions-entry.php",
-            "src/Site/functions-site.php",
-            "src/functions-filters.php",
-            "src/functions-helpers.php"
+            "src/bootstrap-theme.php"
 		]
     },
     "require": {
