@@ -76,7 +76,7 @@ function body_class_filter( $classes, $class ) {
 	}
 
 	// Front page of the site.
-	if ( is_front_page() ) {
+	if ( is_front_page() && ! is_home() ) {
 		$classes[] = 'home';
 	}
 
