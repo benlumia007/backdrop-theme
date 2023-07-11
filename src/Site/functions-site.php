@@ -50,6 +50,7 @@ function render_site_title( array $args = [] ) {
 	if ( $title ) {
 		$link = render_home_link( [
 			'text' => $title,
+			'class' => $args['link_class']
 		] );
 
 		$html = sprintf(
