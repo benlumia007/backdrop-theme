@@ -40,6 +40,7 @@ function render_site_title( array $args = [] ) {
 	$args = wp_parse_args( $args, [
 		'tag'       => 'h1',
 		'class'      => 'site-title',
+		'link_class' => 'site-title-link'
 	] );
 
 	$html = '';
