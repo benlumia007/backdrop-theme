@@ -70,7 +70,7 @@ function render_title( array $args = [] ) {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
-		'tag'    => $is_single ? 'h1' : 'h1',
+		'tag'    => $is_single ? 'h1' : 'h2',
 		'link'   => ! $is_single,
 		'class'  => 'entry-title',
 		'before' => '',
