@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 - July 27, 2023
+Fixed
+* Make sure that single post is using h1
+
 ## 1.0.2 - July 11, 2023
 Added
 * Added `link_class` to render_site_title
