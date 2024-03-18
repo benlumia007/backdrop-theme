@@ -230,6 +230,19 @@ function render_home_link( array $args = [] ) {
 }
 
 /**
+ * Output the WordPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_wp_link( array $args = [] ) {
+
+	echo render_wp_link( $args );
+}
+
+/**
  * Returns the WordPress Link HTML.
  *
  * @since  1.0.0
@@ -255,14 +268,40 @@ function render_wp_link( array $args = [] ) {
 }
 
 /**
- * Output the WordPress Link HTML.
+ * Output the ClassicPress Link HTML.
  *
  * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
-function display_wp_link( array $args = [] ) {
+function display_cp_link( array $args = [] ) {
 
-	echo render_wp_link( $args );
+	echo render_cp_link( $args );
+}
+
+/**
+ * Returns the WordPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_cp_link( array $args = [] ) {
+
+	$args = wp_parse_args( $args, [
+		'text'   => '%s',
+		'class'  => 'cp-link',
+		'before' => '',
+		'after'  => '',
+	] );
+
+	$html = sprintf(
+		'<a class="%1$s" href="%2$s">%3$s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( __( 'https://www.classicpress.net', 'backdrop' ) ),
+		sprintf( $args['text'], esc_html__( 'ClassicPress', 'backdrop' ) )
+	);
+	return apply_filters( 'backdrop/render/cp/link', $html );
 }
