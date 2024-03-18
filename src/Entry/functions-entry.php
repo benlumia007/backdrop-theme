@@ -6,7 +6,7 @@
  * @author    Benjamin Lu <benlumia007@gmail.com>
  * @copyright Copyright (C) 2022. Benjamin Lu
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
- * @link      https://github.com/benlumia007/luthemes.com
+ * @link      https://github.com/backdrop-dev/theme
  */
 
 /**
@@ -60,55 +60,70 @@ function hierarchy() {
 	return apply_filters( 'hybrid/theme/post/hierarchy', $hierarchy );
 }
 
+/**
+ * Outputs the post title HTML.
+ *
+ * @param  array $args
+ * @return void
+ */
 function display_title( array $args = [] ) {
-	echo render_title( $args ); // phpcs:ignore
+
+    echo render_title( $args );
 }
 
+/**
+ * Returns the post title HTML.
+ *
+ * @param  array $args
+ * @return string
+ */
 function render_title( array $args = [] ) {
-	$post_id = get_the_ID();
-	$is_single = is_single( $post_id ) || is_page( $post_id ) || is_attachment( $post_id );
 
-	$args = wp_parse_args( $args, [
-		'text'   => '%s',
-		'tag'    => $is_single ? 'h1' : 'h2',
-		'link'   => ! $is_single,
-		'class'  => 'entry-title',
-		'before' => '',
-		'after'  => ''
-	] );
+    $post_id   = get_the_ID();
+    $is_single = is_single( $post_id ) || is_page( $post_id ) || is_attachment( $post_id );
 
-	$text = sprintf( $args['text'], $is_single ? single_post_title( '', false ) : the_title( '', '', false ) );
+    $args = wp_parse_args( $args, [
+        'after'  => '',
+        'before' => '',
+        'class'  => 'entry__title',
+        'link'   => ! $is_single,
+        'tag'    => $is_single ? 'h1' : 'h2',
+        'text'   => '%s',
+    ] );
 
-	if ( $args['link'] ) {
-		$text = render_permalink( [ 'text' => $text ] );
-	}
+    $text = sprintf( $args['text'], $is_single ? single_post_title( '', false ) : the_title( '', '', false ) );
 
-	$html = sprintf(
-		'<%1$s class="%2$s">%3$s</%1$s>',
-		tag_escape( $args['tag'] ),
-		esc_attr( $args['class'] ),
-		$text
-	);
+    if ( $args['link'] ) {
+        $text = render_permalink( [ 'text' => $text ] );
+    }
 
-	return apply_filters( 'backdrop/display/title', $args['before'] . $html . $args['after'] );
+    $html = sprintf(
+        '<%1$s class="%2$s">%3$s</%1$s>',
+        tag_escape( $args['tag'] ),
+        esc_attr( $args['class'] ),
+        $text
+    );
+
+    return apply_filters( 'backdrop/theme/post/title', $args['before'] . $html . $args['after'] );
 }
 
 /**
  * Outputs the post permalink HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_permalink( array $args = [] ) {
-	echo render_permalink( $args ); // phpcs:ignore
+
+	echo render_permalink( $args );
 }
 
 /**
  * Returns the post permalink HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -137,13 +152,14 @@ function render_permalink( array $args = [] ) {
 /**
  * Outputs the post author HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_author( array $args = [] ) {
-	echo render_author( $args ); // phpcs:ignore
+
+	echo render_author( $args );
 }
 
 function render_author( array $args = [] ) {
@@ -175,20 +191,20 @@ function render_author( array $args = [] ) {
 /**
  * Outputs the post date HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_date( array $args = [] ) {
 
-	echo render_date( $args ); // phpcs:ignore
+	echo render_date( $args );
 }
 
 /**
  * Returns the post date HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -216,20 +232,20 @@ function render_date( array $args = [] ) {
 /**
  * Outputs the post comments link HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_comments_link( array $args = [] ) {
 
-	echo render_comments_link( $args ); // phpcs:ignore
+	echo render_comments_link( $args );
 }
 
 /**
  * Returns the post comments link HTML.
  *
- * @since  3.0.0
+ * @since  1.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -262,4 +278,282 @@ function render_comments_link( array $args = [] ) {
 	);
 
 	return apply_filters( 'backdrop/display/comments/link', $args['before'] . $html . $args['after'] );
+}
+
+/**
+ * Output the ClassicPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_cp_link( array $args = [] ) {
+
+	echo render_cp_link( $args );
+}
+
+/**
+ * Returns the ClassicPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_cp_link( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'text'   => '%s',
+		'class'  => 'cp-link',
+		'before' => '',
+		'after'  => '',
+	] );
+
+	$html = sprintf(
+		'<a class="%1$s" href="%2$s">%3$s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( __( 'https://classicpress.net', 'backdrop' ) ),
+		sprintf( $args['text'], esc_html__( 'ClassicPress', 'backdrop' ) )
+	);
+	return apply_filters( 'backdrop/render/cp/link', $html );
+}
+
+/**
+ * Returns the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return string
+ */
+function render_home_link( array $args = [] ) {
+
+	$args = wp_parse_args( $args, [
+		'text'   => '%s',
+		'class'  => 'home-link',
+		'before' => '',
+		'after'  => ''
+	] );
+
+	$html = sprintf(
+		'<a class="%s" href="%s" rel="home">%s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( home_url() ),
+		sprintf( $args['text'], get_bloginfo( 'name', 'display' ) )
+	);
+	return apply_filters( 'backdrop/render/home/link', $args['before'] . $html . $args['after'] );
+}
+
+/**
+ * Outputs the site title HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_site_title( array $args = [] ) {
+	echo render_site_title( $args ); // phpcs:ignore
+}
+
+/**
+ * Returns the site title HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_site_title( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'tag'       => 'h1',
+		'class'      => 'site-title',
+	] );
+
+	$html = '';
+	$title = get_bloginfo( 'name', 'display' );
+
+	if ( $title ) {
+		$link = render_home_link( [
+			'text' => $title,
+		] );
+
+		$html = sprintf(
+			'<%1$s class="%2$s">%3$s</%1$s>',
+			tag_escape( $args['tag'] ),
+			esc_attr( $args['class'] ),
+			$link // phpcs:ignore
+		);
+	}
+	return apply_filters( 'backdrop/render/site/title', $html );
+}
+
+/**
+ * Outputs the site description HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_site_description( array $args = [] ) {
+	echo render_site_description( $args ); // phpcs:ignore
+}
+
+/**
+ * Returns the site description HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_site_description( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'tag'       => 'span',
+		'class'      => 'site-description',
+	] );
+
+	$html = '';
+	$title = get_bloginfo( 'description', 'display' );
+
+	if ( $title ) {
+		$html = sprintf(
+			'<%1$s class="%2$s">%3$s</%1$s>',
+			tag_escape( $args['tag'] ),
+			esc_attr( $args['class'] ),
+			$title
+		);
+	}
+	return apply_filters( 'backdrop/render/site/description', $html );
+}
+
+/**
+ * Outputs the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_site_link( array $args = [] ) {
+	echo render_site_link( $args ); // phpcs:ignore
+}
+
+/**
+ * Return the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_site_link( array $args = [] ) {
+	$args = wp_parse_args(
+		$args,
+		[
+			'text'   => '%s',
+			'class'  => 'site-link',
+			'before' => '',
+			'after'  => '',
+		]
+	);
+	$html = sprintf(
+		'<a class="%1$s" href="%2$s">%3$s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( home_url( '/' ) ),
+		sprintf( $args['text'], get_bloginfo( 'name' ) )
+	);
+	return apply_filters( 'backdrop/render/site/link', $html );
+}
+
+/**
+ * Output the WordPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_wp_link( array $args = [] ) {
+
+	echo render_wp_link( $args );
+}
+
+/**
+ * Returns the WordPress Link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_wp_link( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'text'   => '%s',
+		'class'  => 'wp-link',
+		'before' => '',
+		'after'  => '',
+	] );
+
+	$html = sprintf(
+		'<a class="%1$s" href="%2$s">%3$s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( __( 'https://wordpress.org', 'backdrop' ) ),
+		sprintf( $args['text'], esc_html__( 'WordPress', 'backdrop' ) )
+	);
+	return apply_filters( 'backdrop/render/wp/link', $html );
+}
+
+function display_theme_link( array $args = [] ) {
+	echo render_theme_link( $args ); // phpcs:ignore
+}
+
+/**
+ * Returns the Theme Link.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function render_theme_link( array $args = [] ) {
+	$args = wp_parse_args( $args, [
+		'class'  => 'theme-link',
+		'before' => '',
+		'after'  => ''
+	] );
+
+	$theme = wp_get_theme( get_template() );
+
+	$allowed = [
+		'abbr'    => [ 'title' => true ],
+		'acronym' => [ 'title' => true ],
+		'code'    => true,
+		'em'      => true,
+		'strong'  => true
+	];
+
+	$html = sprintf(
+		'<a class="%s" href="%s">%s</a>',
+		esc_attr( $args['class'] ),
+		esc_url( $theme->display( 'ThemeURI' ) ),
+		wp_kses( $theme->display( 'Name' ), $allowed )
+	);
+
+	return apply_filters( 'backdrop/render/theme/link', $args['before'] . $html . $args['after'] );
+}
+
+
+/**
+ * Outputs the site link HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_home_link( array $args = [] ) {
+
+	echo render_home_link( $args );
 }
