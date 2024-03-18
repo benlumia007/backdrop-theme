@@ -183,7 +183,7 @@ function render_author( array $args = [] ) {
 		);
 	}
 
-	$html = sprintf( '<i class="fas fa-user"></i><span class="%s">%s</span>', esc_attr( $args['class'] ), $author );
+	$html = sprintf( '<span class="%s">%s</span>', esc_attr( $args['class'] ), $author );
 
 	return apply_filters( 'backdrop/display/author', $args['before'] . $html . $args['after'] );
 }
@@ -271,7 +271,7 @@ function render_comments_link( array $args = [] ) {
 	$text = get_comments_number_text( $args['zero'], $args['one'], $args['more'] );
 
 	$html = sprintf(
-		'<i class="fas fa-comment"></i><a class="%s" href="%s">%s</a>',
+		'<a class="%s" href="%s">%s</a>',
 		esc_attr( $args['class'] ),
 		esc_url( $url ),
 		$text
