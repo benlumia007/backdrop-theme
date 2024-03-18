@@ -254,44 +254,6 @@ function render_wp_link( array $args = [] ) {
 	return apply_filters( 'backdrop/render/wp/link', $html );
 }
 
-function display_theme_link( array $args = [] ) {
-	echo render_theme_link( $args ); // phpcs:ignore
-}
-
-/**
- * Returns the Theme Link.
- *
- * @since  1.0.0
- * @access public
- * @param  array  $args
- * @return void
- */
-function render_theme_link( array $args = [] ) {
-	$args = wp_parse_args( $args, [
-		'class'  => 'theme-link',
-		'before' => '',
-		'after'  => ''
-	] );
-
-	$theme = wp_get_theme( get_template() );
-
-	$allowed = [
-		'abbr'    => [ 'title' => true ],
-		'acronym' => [ 'title' => true ],
-		'code'    => true,
-		'em'      => true,
-		'strong'  => true
-	];
-
-	$html = sprintf(
-		'<a class="%s" href="%s">%s</a>',
-		esc_attr( $args['class'] ),
-		esc_url( $theme->display( 'ThemeURI' ) ),
-		wp_kses( $theme->display( 'Name' ), $allowed )
-	);
-
-	return apply_filters( 'backdrop/render/theme/link', $args['before'] . $html . $args['after'] );
-}
 /**
  * Output the WordPress Link HTML.
  *
