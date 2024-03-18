@@ -85,7 +85,7 @@ function render_title( array $args = [] ) {
     $args = wp_parse_args( $args, [
         'after'  => '',
         'before' => '',
-        'class'  => 'entry__title',
+        'class'  => 'entry-title',
         'link'   => ! $is_single,
         'tag'    => $is_single ? 'h1' : 'h2',
         'text'   => '%s',
@@ -177,7 +177,7 @@ function render_author( array $args = [] ) {
 		$url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
 		$author = sprintf(
-			'<a class="entry__author-link" href="%s">%s</a>',
+			'<a class="entry-author-link" href="%s">%s</a>',
 			esc_url( $url ),
 			$author
 		);
