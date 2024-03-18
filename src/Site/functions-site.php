@@ -266,19 +266,3 @@ function display_wp_link( array $args = [] ) {
 
 	echo render_wp_link( $args );
 }
-
-
-
-
-/**
- * Outputs the site link HTML.
- *
- * @since  1.0.0
- * @access public
- * @param  array  $args
- * @return void
- */
-function display_home_link( array $args = [] ) {
-
-	echo render_home_link( $args );
-}
