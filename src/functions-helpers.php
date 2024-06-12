@@ -45,13 +45,12 @@ function is_plugin_active( $plugin ) {
         // Use the 'is_plugin_active' function to check if the plugin is active.
         return is_plugin_active( $plugin );
     } else {
-        $active_plugins = get_option( 'active_plugins' ) {
+        $active_plugins = get_option( 'active_plugins' );
 
-            if ( in_array( $plugin, $active_plugins ) ) {
-                return true;
-            } else {
-                return false;
-            }
+        if ( in_array( $plugin, $active_plugins ) ) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
