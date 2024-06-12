@@ -36,21 +36,3 @@ function is_classicpress() {
         return false;
     }
 }
-
-function is_plugin_active( $plugin ) {
-
-    // Check if the function 'is_plugin_active' exists, which provides by ClassicPress/WordPress.
-    if ( function_exists( 'is_plugin_active' ) ) {
-
-        // Use the 'is_plugin_active' function to check if the plugin is active.
-        return is_plugin_active( $plugin );
-    } else {
-        $active_plugins = get_option( 'active_plugins' );
-
-        if ( in_array( $plugin, $active_plugins ) ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-}

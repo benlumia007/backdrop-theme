@@ -317,10 +317,51 @@ function comments_template( $template ) {
 	return locate_template( $templates );
 }
 
+/**
+ * Check if a specific plugin is active.
+ *
+ * @param string $plugin The path to the plugin file relative to the plugins directory.
+ * @return bool True if the plugin is active, false otherwise.
+ */
 function is_plugin_active( $plugin ) {
+    
+	// Check if the 'is_plugin_active' function exists, which is provided by WordPress.
+    if ( function_exists( 'is_plugin_active' ) ) {
+        
+		// Use the 'is_plugin_active' function to check if the plugin is active.
+        return is_plugin_active($plugin);
+    } else {
+        
+		// If the 'is_plugin_active' function doesn't exist, perform a manual check.
 
-	return in_array( $plugin, get_option( 'active_plugins', [] ) );
+        // For single site installations:
+        // Get the list of active plugins.
+        $active_plugins = get_option('active_plugins');
+        // Check if the specified plugin is in the list of active plugins.
+        if ( in_array( $plugin, $active_plugins ) ) {
+            
+			return true;
+        }
+
+        // For multisite installations:
+        // Check if the current site is part of a multisite network.
+        if ( is_multisite() ) {
+            
+			// Get the list of network-wide active plugins.
+            $network_active_plugins = get_site_option('active_sitewide_plugins');
+            
+			// Check if the specified plugin is in the list of network-wide active plugins.
+            if ( isset( $network_active_plugins[$plugin] ) ) {
+                
+				return true;
+            }
+        }
+
+        // If the plugin is not found in either single site or multisite active plugins, return false.
+        return false;
+    }
 }
+
 
 /**
  * Filters `get_the_archve_title` to add better archive titles than core.
