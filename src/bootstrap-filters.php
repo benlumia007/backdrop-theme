@@ -35,4 +35,4 @@ add_action( 'wp_head', __NAMESPACE__ . '\link_pingback',  0 );
 # Filter the comments template.
 add_filter( 'comments_template', __NAMESPACE__ . '\comments_template', 5 );
 
-add_action( 'init', __NAMESPACE__ . '\is_plugin_active');
+add_action( 'init', __NAMESPACE__ . '\is_plugin_or_class_active');

@@ -323,44 +323,30 @@ function comments_template( $template ) {
  * @param string $plugin The path to the plugin file relative to the plugins directory.
  * @return bool True if the plugin is active, false otherwise.
  */
-function is_plugin_active( $plugin ) {
-    
-	// Check if the 'is_plugin_active' function exists, which is provided by WordPress.
-    if ( function_exists( 'is_plugin_active' ) ) {
-        
-		// Use the 'is_plugin_active' function to check if the plugin is active.
-        return is_plugin_active($plugin);
-    } else {
-        
-		// If the 'is_plugin_active' function doesn't exist, perform a manual check.
-
-        // For single site installations:
-        // Get the list of active plugins.
-        $active_plugins = get_option('active_plugins');
-        // Check if the specified plugin is in the list of active plugins.
-        if ( in_array( $plugin, $active_plugins ) ) {
-            
-			return true;
-        }
-
-        // For multisite installations:
-        // Check if the current site is part of a multisite network.
-        if ( is_multisite() ) {
-            
-			// Get the list of network-wide active plugins.
-            $network_active_plugins = get_site_option('active_sitewide_plugins');
-            
-			// Check if the specified plugin is in the list of network-wide active plugins.
-            if ( isset( $network_active_plugins[$plugin] ) ) {
-                
-				return true;
-            }
-        }
-
-        // If the plugin is not found in either single site or multisite active plugins, return false.
-        return false;
+/**
+ * Checks if a plugin is active, active for the network, or if a class exists.
+ *
+ * @param string $plugin_path The path to the plugin file relative to wp-content/plugins.
+ * @param string $class_name  The name of the class to check for existence (optional).
+ * @return bool True if the plugin is active, active for the network, or the class exists. False otherwise.
+ */
+function is_plugin_or_class_active( $plugin, $class_name = '' ) {
+    if ( ! function_exists( 'is_plugin_active' ) ) {
+        include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     }
+    
+    if ( is_plugin_active( $plugin ) || is_plugin_active_for_network( $plugin ) ) { 
+        
+		return true;
+    }
+    if ( $class_name && class_exists( $class_name ) ) {
+        
+		return true;
+    }
+	
+    return false;
 }
+
 
 
 /**
