@@ -29,7 +29,7 @@ function mod( $name, $default = false ) {
 }
 
 
-function is_classicpress() {
+function is_classicpress(): bool {
     if ( function_exists( 'classicpress_version' ) ) {
         return true;
     } else {

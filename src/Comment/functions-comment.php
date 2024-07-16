@@ -20,7 +20,7 @@ namespace Backdrop\Theme\Comment;
  * @access public
  * @return array
  */
-function hierarchy() {
+function hierarchy(): array {
 
 	$hier = [];
 	$type = get_comment_type() ?: 'comment';
@@ -42,7 +42,7 @@ function hierarchy() {
  * @param  array   $args
  * @return void
  */
-function display_author( array $args = [] ) {
+function display_author( array $args = [] ): void {
 
 	echo render_author( $args );
 }
@@ -55,7 +55,7 @@ function display_author( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_author( array $args = [] ) {
+function render_author( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -81,7 +81,7 @@ function render_author( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_author_link( array $args = [] ) {
+function display_author_link( array $args = [] ): void {
 	echo render_author_link( $args );
 }
 
@@ -93,7 +93,7 @@ function display_author_link( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_author_link( array $args = [] ) {
+function render_author_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -127,7 +127,7 @@ function render_author_link( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_permalink( array $args = [] ) {
+function display_permalink( array $args = [] ): void {
 	echo render_permalink( $args );
 }
 
@@ -139,7 +139,7 @@ function display_permalink( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_permalink( array $args = [] ) {
+function render_permalink( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -168,7 +168,7 @@ function render_permalink( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_date( array $args = [] ) {
+function display_date( array $args = [] ): void {
 
 	echo render_date( $args );
 }
@@ -181,7 +181,7 @@ function display_date( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_date( array $args = [] ) {
+function render_date( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -211,7 +211,7 @@ function render_date( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_time( array $args = [] ) {
+function display_time( array $args = [] ): void {
 	echo render_time( $args );
 }
 
@@ -223,7 +223,7 @@ function display_time( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_time( array $args = [] ) {
+function render_time( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -253,7 +253,7 @@ function render_time( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_edit_link( array $args = [] ) {
+function display_edit_link( array $args = [] ): void {
 	echo render_edit_link( $args );
 }
 
@@ -265,10 +265,10 @@ function display_edit_link( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_edit_link( array $args = [] ) {
+function render_edit_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
-		'text'   => __( 'Edit', 'hybrid-core' ),
+		'text'   => __( 'Edit', 'backdrop' ),
 		'class'  => 'comment-edit',
 		'before' => '',
 		'after'  => ''
@@ -300,7 +300,7 @@ function render_edit_link( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_reply_link( array $args = [] ) {
+function display_reply_link( array $args = [] ): void {
 	echo render_reply_link( $args );
 }
 
@@ -315,7 +315,7 @@ function display_reply_link( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_reply_link( array $args = [] ) {
+function render_reply_link( array $args = [] ): string {
 
 	// Array of comment types that are not allowed to have replies.
 	$disallowed = [
@@ -365,7 +365,7 @@ function render_reply_link( array $args = [] ) {
  * @param  array   $args
  * @return void
  */
-function display_parent_link( array $args = [] ) {
+function display_parent_link( array $args = [] ): void {
 	echo render_parent_link( $args );
 }
 
@@ -377,7 +377,7 @@ function display_parent_link( array $args = [] ) {
  * @param  array   $args
  * @return string
  */
-function render_parent_link( $args = [] ) {
+function render_parent_link( $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s', // Defaults to parent comment author.
@@ -422,7 +422,7 @@ function render_parent_link( $args = [] ) {
  * @param  \WP_Comment|int  Comment object or ID.
  * @return bool
  */
-function is_approved( $comment = null ) {
+function is_approved( $comment = null ): bool {
 	$comment = get_comment( $comment );
 
 	return 'approved' === wp_get_comment_status( $comment->ID );

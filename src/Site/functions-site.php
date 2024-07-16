@@ -22,7 +22,7 @@ namespace Backdrop\Theme\Site;
  * @param  array  $args
  * @return void
  */
-function display_site_title( array $args = [] ) {
+function display_site_title( array $args = [] ): void {
 
 	echo render_site_title( $args );
 }
@@ -35,7 +35,7 @@ function display_site_title( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function render_site_title( array $args = [] ) {
+function render_site_title( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'tag'       => 'h1',
@@ -72,7 +72,7 @@ function render_site_title( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_site_description( array $args = [] ) {
+function display_site_description( array $args = [] ): void {
 
 	echo render_site_description( $args );
 }
@@ -83,9 +83,9 @@ function display_site_description( array $args = [] ) {
  * @since  1.0.0
  * @access public
  * @param  array  $args
- * @return void
+ * @return string
  */
-function render_site_description( array $args = [] ) {
+function render_site_description( array $args = [] ):string {
 
 	$args = wp_parse_args( $args, [
 		'tag'       => 'span',
@@ -116,7 +116,7 @@ function render_site_description( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_site_link( array $args = [] ) {
+function display_site_link( array $args = [] ): void {
 
 	echo render_site_link( $args );
 }
@@ -127,9 +127,9 @@ function display_site_link( array $args = [] ) {
  * @since  1.0.0
  * @access public
  * @param  array  $args
- * @return void
+ * @return string
  */
-function render_site_link( array $args = [] ) {
+function render_site_link( array $args = [] ): string {
 
 	$args = wp_parse_args(
 		$args,
@@ -149,7 +149,7 @@ function render_site_link( array $args = [] ) {
 	return apply_filters( 'backdrop/render/site/link', $html );
 }
 
-function display_theme_link( array $args = [] ) {
+function display_theme_link( array $args = [] ): void {
 
 	echo render_theme_link( $args );
 }
@@ -162,7 +162,7 @@ function display_theme_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function render_theme_link( array $args = [] ) {
+function render_theme_link( array $args = [] ): string {
     
 	$args = wp_parse_args( $args, [
 		'class'  => 'theme-link',
@@ -198,7 +198,7 @@ function render_theme_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_home_link( array $args = [] ) {
+function display_home_link( array $args = [] ): void {
 
 	echo render_home_link( $args );
 }
@@ -211,7 +211,7 @@ function display_home_link( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_home_link( array $args = [] ) {
+function render_home_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -237,7 +237,7 @@ function render_home_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_wp_link( array $args = [] ) {
+function display_wp_link( array $args = [] ): void {
 
 	echo render_wp_link( $args );
 }
@@ -248,9 +248,9 @@ function display_wp_link( array $args = [] ) {
  * @since  1.0.0
  * @access public
  * @param  array  $args
- * @return void
+ * @return string
  */
-function render_wp_link( array $args = [] ) {
+function render_wp_link( array $args = [] ): string {
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
 		'class'  => 'wp-link',
@@ -275,7 +275,7 @@ function render_wp_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_cp_link( array $args = [] ) {
+function display_cp_link( array $args = [] ): void {
 
 	echo render_cp_link( $args );
 }
@@ -288,7 +288,7 @@ function display_cp_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function render_cp_link( array $args = [] ) {
+function render_cp_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',

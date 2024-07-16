@@ -22,7 +22,7 @@ namespace Backdrop\Theme\Entry;
  * @access public
  * @return array
  */
-function hierarchy() {
+function hierarchy(): array {
 
 	// Set up an empty array and get the post type.
 	$hierarchy = [];
@@ -66,7 +66,7 @@ function hierarchy() {
  * @param  array $args
  * @return void
  */
-function display_title( array $args = [] ) {
+function display_title( array $args = [] ): void {
 
     echo render_title( $args );
 }
@@ -77,7 +77,7 @@ function display_title( array $args = [] ) {
  * @param  array $args
  * @return string
  */
-function render_title( array $args = [] ) {
+function render_title( array $args = [] ): string {
 
     $post_id   = get_the_ID();
     $is_single = is_single( $post_id ) || is_page( $post_id ) || is_attachment( $post_id );
@@ -115,7 +115,7 @@ function render_title( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_permalink( array $args = [] ) {
+function display_permalink( array $args = [] ): void {
 
 	echo render_permalink( $args );
 }
@@ -128,7 +128,7 @@ function display_permalink( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_permalink( array $args = [] ) {
+function render_permalink( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -157,12 +157,12 @@ function render_permalink( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_author( array $args = [] ) {
+function display_author( array $args = [] ): void {
 
 	echo render_author( $args );
 }
 
-function render_author( array $args = [] ) {
+function render_author( array $args = [] ): string {
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
 		'class'  => 'entry-author',
@@ -196,7 +196,7 @@ function render_author( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_date( array $args = [] ) {
+function display_date( array $args = [] ): void {
 
 	echo render_date( $args );
 }
@@ -209,7 +209,7 @@ function display_date( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_date( array $args = [] ) {
+function render_date( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
@@ -237,7 +237,7 @@ function render_date( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_comments_link( array $args = [] ) {
+function display_comments_link( array $args = [] ): void {
 
 	echo render_comments_link( $args );
 }
@@ -250,7 +250,7 @@ function display_comments_link( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_comments_link( array $args = [] ) {
+function render_comments_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'zero'   => false,
@@ -288,7 +288,7 @@ function render_comments_link( array $args = [] ) {
  * @param  array  $args
  * @return void
  */
-function display_cp_link( array $args = [] ) {
+function display_cp_link( array $args = [] ): void {
 
 	echo render_cp_link( $args );
 }
@@ -299,9 +299,9 @@ function display_cp_link( array $args = [] ) {
  * @since  1.0.0
  * @access public
  * @param  array  $args
- * @return void
+ * @return string
  */
-function render_cp_link( array $args = [] ) {
+function render_cp_link( array $args = [] ): string {
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',
 		'class'  => 'cp-link',
@@ -326,7 +326,7 @@ function render_cp_link( array $args = [] ) {
  * @param  array  $args
  * @return string
  */
-function render_home_link( array $args = [] ) {
+function render_home_link( array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'text'   => '%s',

@@ -21,7 +21,7 @@ use Backdrop\Theme\Util\Title;
  * @access public
  * @return void
  */
-function meta_generator() {
+function meta_generator(): void {
 	$theme = wp_get_theme( \get_template() );
 
 	$generator = sprintf(
@@ -40,7 +40,7 @@ function meta_generator() {
  * @access public
  * @return void
  */
-function link_pingback() {
+function link_pingback(): void {
 
 	$link = '';
 
@@ -65,7 +65,7 @@ function link_pingback() {
  * @param  array  $class
  * @return array
  */
-function body_class_filter( $classes, $class ) {
+function body_class_filter( $classes, $class ): array {
 
 	$classes = [];
 
@@ -270,7 +270,7 @@ function post_type_support() {
  * @param  string  $text
  * @return string
  */
-function excerpt_more( $text ) {
+function excerpt_more( $text ): string {
 
 	if ( 0 !== strpos( $text, '<a' ) ) {
 
@@ -295,7 +295,7 @@ function excerpt_more( $text ) {
  * @param  string $template
  * @return string
  */
-function comments_template( $template ) {
+function comments_template( $template ): string {
 
 	$templates = [];
 
@@ -330,7 +330,7 @@ function comments_template( $template ) {
  * @param string $class_name  The name of the class to check for existence (optional).
  * @return bool True if the plugin is active, active for the network, or the class exists. False otherwise.
  */
-function is_plugin_or_class_active( $plugin, $class_name = '' ) {
+function is_plugin_or_class_active( $plugin, $class_name = '' ): bool {
     if ( ! function_exists( 'is_plugin_active' ) ) {
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     }
@@ -357,7 +357,7 @@ function is_plugin_or_class_active( $plugin, $class_name = '' ) {
  * @param  string  $title
  * @return string
  */
-function archive_title_filter( $title ) {
+function archive_title_filter( $title ): string {
 	return apply_filters( 'backdrop/theme/archive/title', Title::current() );
 }
 
@@ -369,7 +369,7 @@ function archive_title_filter( $title ) {
  * @param  string  $desc
  * @return string
  */
-function archive_description_filter( $desc ) {
+function archive_description_filter( $desc ): string {
 
 	$new_desc = '';
 
@@ -418,7 +418,7 @@ function archive_description_format( $desc ) {
  * @param  string  $title
  * @return string
  */
-function untitled_post( $title ) {
+function untitled_post( $title ): string {
 
 	// Translators: Used as a placeholder for untitled posts on non-singular views.
 	if ( ! $title && ! is_singular() && in_the_loop() && ! is_admin() ) {

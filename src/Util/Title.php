@@ -30,7 +30,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-    public static function current() {
+    public static function current(): string {
 
         $title = '';
 
@@ -56,7 +56,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function frontPage() {
+	public static function frontPage(): string {
 		return get_bloginfo( 'name', 'display' );
 	}
 
@@ -67,7 +67,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function home() {
+	public static function home(): string {
 		return get_post_field( 'post_title', get_queried_object_id() );
 	}
 
@@ -78,7 +78,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function post() {
+	public static function post(): string {
 		return single_post_title( '', false );
 	}
 
@@ -151,7 +151,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function error() {
+	public static function error(): string {
 		return esc_html__( '404 Not Found', 'backdrop' );
 	}
 
@@ -162,7 +162,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function term() {
+	public static function term(): string {
 		return single_term_title( '', false );
 	}
 
@@ -173,7 +173,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function postTypeArchive() {
+	public static function postTypeArchive(): string {
 		return post_type_archive_title( '', false );
 	}
 
@@ -184,7 +184,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function month() {
+	public static function month(): string {
 		return get_the_date( esc_html_x( 'F Y', 'monthly archives date format', 'backdrop' ) );
 	}
 
@@ -195,7 +195,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function author() {
+	public static function author(): string {
 		return get_the_author_meta( 'display_name', absint( get_query_var( 'author' ) ) );
 	}
 
@@ -217,7 +217,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function week() {
+	public static function week(): string {
 		return sprintf(
 			// Translators: 1 is the week number and 2 is the year.
 			esc_html__( 'Week %1$s of %2$s', 'backdrop' ),
@@ -233,7 +233,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function day() {
+	public static function day(): string {
 		return get_the_date( esc_html_x( 'F j, Y', 'daily archives date format', 'backdrop' ) );
 	}
 
@@ -244,7 +244,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function hour() {
+	public static function hour(): string {
 		return get_the_time( esc_html_x( 'g a', 'hour archives time format', 'backdrop' ) );
 	}
 
@@ -255,7 +255,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function minute() {
+	public static function minute(): string {
 		return sprintf(
 			// Translators: Minute archive title. %s is the minute time format.
 			esc_html__( 'Minute %s', 'backdrop' ),
@@ -270,7 +270,7 @@ class Title {
 	 * @access public
 	 * @return string
 	 */
-	public static function minuteHour() {
+	public static function minuteHour(): string {
 		return get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'backdrop' ) );
 	}
 }
