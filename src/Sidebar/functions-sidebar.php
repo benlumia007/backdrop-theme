@@ -4,7 +4,7 @@
  *
  * Helper functions and template tags related to sidebars.
  *
- * @package   Backdrop Theme
+ * @package   Backdrop Theme 
  * @link      https://github.com/backdrop-dev/theme
  *
  * @author    Benjamin Lu

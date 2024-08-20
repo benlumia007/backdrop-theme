@@ -1,6 +1,6 @@
 <?php
 /**
- * Nav menu functions.
+ * Nav menu functions. 
  *
  * Helper functions and template tags related to nav menus.
  *
