@@ -57,7 +57,7 @@ function hierarchy(): array {
 	// Template based off the post type.
 	$hierarchy[] = $post_type;
 
-	return apply_filters( 'hybrid/theme/post/hierarchy', $hierarchy );
+	return apply_filters( 'backdrop/theme/post/hierarchy', $hierarchy );
 }
 
 /**
@@ -342,4 +342,55 @@ function render_home_link( array $args = [] ): string {
 		sprintf( $args['text'], get_bloginfo( 'name', 'display' ) )
 	);
 	return apply_filters( 'backdrop/render/home/link', $args['before'] . $html . $args['after'] );
+}
+
+/**
+ * Outputs the post terms HTML.
+ *
+ * @param array $args
+ * @return void
+ */
+function display_terms( array $args = [] ) {
+    echo render_terms( $args );
+}
+
+/**
+ * Returns the post terms HTML.
+ *
+ * @param array $args
+ * @return string
+ */
+function render_terms( array $args = [] ) {
+
+    $html = '';
+
+    $args = wp_parse_args( $args, [
+        'after'    => '',
+        'before'   => '',
+        'class'    => '',
+        // Translators: Separates tags, categories, etc. when displaying a post.
+        'sep'      => _x( ', ', 'taxonomy terms separator', 'backdrop' ),
+        'taxonomy' => 'category',
+        'text'     => '%s',
+    ] );
+
+    // Append taxonomy to class name.
+    if ( ! $args['class'] ) {
+        $args['class'] = "entry__terms entry__terms--{$args['taxonomy']}";
+    }
+
+    $terms = get_the_term_list( get_the_ID(), $args['taxonomy'], '', $args['sep'], '' );
+
+    if ( $terms ) {
+
+        $html = sprintf(
+            '<span class="%s">%s</span>',
+            esc_attr( $args['class'] ),
+            sprintf( $args['text'], $terms )
+        );
+
+        $html = $args['before'] . $html . $args['after'];
+    }
+
+    return apply_filters( 'backdrop/theme/post/terms', $html );
 }
