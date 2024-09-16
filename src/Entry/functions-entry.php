@@ -394,3 +394,48 @@ function render_terms( array $args = [] ) {
 
     return apply_filters( 'backdrop/theme/post/terms', $html );
 }
+
+/**
+ * Outputs the post reading time HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return void
+ */
+function display_reading_time( array $args = [] ): void {
+
+	echo render_reading_time( $args );
+}
+
+/**
+ * Renders the post reading time HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $args
+ * @return string
+ */
+function render_reading_time( array $args = [] ): string {
+	$args = wp_parse_args( $args, [
+		'text'   => '%s min read',
+		'class'  => 'entry-reading-time',
+		'before' => '',
+		'after'  => ''
+	] );
+
+	// Get the post content
+	$content = get_post_field( 'post_content', get_the_ID() );
+
+	// Calculate word count and reading time (200 words per minute)
+	$word_count = str_word_count( strip_tags( $content ) );
+	$reading_time = ceil( $word_count / 200 );
+
+	// Format the reading time string
+	$reading_time_text = sprintf( $args['text'], $reading_time );
+
+	// Generate the final HTML with the class and reading time text
+	$html = sprintf( '<span class="%s">%s</span>', esc_attr( $args['class'] ), esc_html( $reading_time_text ) );
+
+	return apply_filters( 'backdrop/display/reading_time', $args['before'] . $html . $args['after'] );
+}
